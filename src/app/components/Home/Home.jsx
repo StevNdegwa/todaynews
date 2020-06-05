@@ -21,15 +21,15 @@ export default function Home(){
   }
   
   return (<>
-    <Header doSearch={(query)=>newslist.current.updateArticles("search", query)} search={true}/>
+    <Header doSearch={(query)=>newslist.current.updateArticles("search", query)} search/>
     <Topics>
-        <Topic onClick={()=>setShowTopicsList(l=>!l)}><MdAdd size="1.5em"/></Topic>
-        <Topic onClick={()=>handleTopicClick("topnews")} active={currTopic === "topnews"}>Top News</Topic>
-        {topics.map((t,idx)=>{
-          return (<Topic key={idx} onDoubleClick={()=>changeTopics({type:"remove", topic:t.key})} title="Double click to remove" onClick={()=>handleTopicClick(t.key)} active={currTopic === t.key}>
-            {t.label}
-          </Topic>);
-        })}
+      <Topic onClick={()=>setShowTopicsList(l=>!l)}><MdAdd size="1.5em"/></Topic>
+      <Topic onClick={()=>handleTopicClick("topnews")} active={currTopic === "topnews"}>Top News</Topic>
+      {topics.map((t,idx)=>{
+        return (<Topic key={idx} onDoubleClick={()=>changeTopics({type:"remove", topic:t.key})} title="Double click to remove" onClick={()=>handleTopicClick(t.key)} active={currTopic === t.key}>
+          {t.label}
+        </Topic>);
+      })}
     </Topics>
     <Content>
       {showTopicsList && <SelectTopic>

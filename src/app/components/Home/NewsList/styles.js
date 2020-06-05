@@ -23,10 +23,19 @@ margin:0.5em;
 
 export const Item = styled(Li)`
 padding:0.5em;
-& h2{
+&>h2{
   color:#424242;
-  line-height:40px;
-  height:40px;
+  &>svg{
+    height:1.8em;
+    width:1.8em;
+  }
+  &>span{
+    vertical-align:top;
+    font-size:1.2em;
+  }
+}
+&>p{
+  font-size:1.4em;
 }
 &>article{
   &>h4>a{
@@ -36,6 +45,20 @@ padding:0.5em;
     &:hover{
       color:#00c853;
     }
+  }
+}
+@media only screen and (max-width: 700px){
+  &>h2{
+    &>svg{
+      height:1.2em;
+      width:1.2em;
+    }
+    &>span{
+      font-size:0.8em;
+    }
+  }
+  &>p{
+    font-size:0.9em;
   }
 }
 `;

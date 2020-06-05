@@ -78,7 +78,7 @@ class NewsList extends React.Component{
     const {articles, loading, topic, query, netError} = this.state;
     return (<>
       <List>
-      {(topic === "search") ? <><Item><h2><MdChevronRight size="1.5em"/>Search Results: {query}</h2></Item></> : <TopicImg src={this.topicImage()} className="topicImage">{}</TopicImg>}
+      {(topic === "search") ? <><Item><h2><MdChevronRight/><span>Search Results:</span></h2><p>{query}</p></Item></> : <TopicImg src={this.topicImage()} className="topicImage">{}</TopicImg>}
       <hr/>
       {loading && <Item><NewsLoader size="50px"/></Item>}
       {netError&&<Item><Control><MdCancel size="1.5em"/>Please check your internet connection</Control></Item>}

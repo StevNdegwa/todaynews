@@ -25,7 +25,7 @@ export default function Header({search,doSearch}){
     <Nav>
       {search && <HControl>
         <form method="POST" onSubmit={submitSearch}>
-          <SearchInput type="search" placeholder="Search a topic ..." onChange={handleSearchInputChange} value={searchQuery} required/>
+          <SearchInput type="search" placeholder="Search a topic ..." onChange={handleSearchInputChange} value={searchQuery} required autocomplete="on"/>
           <Search><MdSearch size="1.5em"/></Search>
         </form>
       </HControl>}
