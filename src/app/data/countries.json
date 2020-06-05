@@ -1,0 +1,13 @@
+{
+  "countries":[
+    {"key":"cn", "name":"China"},
+    {"key":"in", "name":"India"},
+    {"key":"il", "name":"Israel"},
+    {"key":"jp", "name":"Japan"},
+    {"key":"ke", "name":"Kenya"},
+    {"key":"ng", "name":"Nigeria"},
+    {"key":"za", "name":"South Africa"},
+    {"key":"ug", "name":"Uganda"},
+    {"key":"us", "name":"United States"}
+  ]
+}

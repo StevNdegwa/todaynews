@@ -1,0 +1,12 @@
+{
+  "list":[
+    {"key":"world","label":"World"}, 
+    {"key":"nation","label":"Nation"}, 
+    {"key":"business","label":"Business"}, 
+    {"key":"technology","label":"Technology"}, 
+    {"key":"entertainment","label":"Entertainment"}, 
+    {"key":"sports","label":"Sports"}, 
+    {"key":"science","label":"Science"}, 
+    {"key":"health","label":"Health"}
+  ]
+}
