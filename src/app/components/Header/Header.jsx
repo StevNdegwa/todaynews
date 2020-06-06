@@ -3,18 +3,25 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {MdMenu, MdClear, MdSearch} from "react-icons/md"
 
-import {Ul, Li, Nav, HControl,Search,SearchInput} from "./styles";
+import {Ul, Li, Nav, HControl, Search, SearchInput, Select, Option} from "./styles";
+import SiteContext from "../../SiteContext";
 
 const {countries} = require("../../data/countries.json")
 
 export default function Header({search,doSearch}){
   const [nav, showNav] = React.useState(false);
-  const [searchQuery, setSearchQuery] = React.useState("")
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const site = React.useContext(SiteContext);
   
   function submitSearch(evt){
     evt.preventDefault();
     doSearch(searchQuery);
     setSearchQuery("");
+  }
+  
+  function handleCountrySelection(evt){
+    console.log(evt.target.value)
+    return site.setCountry(evt.target.value)
   }
   
   function handleSearchInputChange(evt){
@@ -29,14 +36,13 @@ export default function Header({search,doSearch}){
           <Search><MdSearch size="1.5em"/></Search>
         </form>
       </HControl>}
-      {/**<HControl>
-        <select>
+      <HControl>
+        <Select defaultValue={site.country} onChange={handleCountrySelection}>
           {countries.map((c)=>{
-            return (<option key={c.key} value={c.keys}>{c.name}</option>)
+            return (<Option key={c.key} value={c.key} >{c.name}</Option>)
           })}
-        </select>
-      </HControl>**/}
-      <div></div>
+        </Select>
+      </HControl>
       <HControl onClick={()=>showNav(n=>!n)}>{nav ? <MdClear size="2em"/> :<MdMenu size="2em"/>}</HControl>
     </Nav>
     <Ul show={nav} className="site-nav">

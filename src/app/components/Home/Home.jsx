@@ -13,15 +13,14 @@ export default function Home(){
   const [topics, changeTopics] = React.useReducer(topicsReducer, [])
   const [showTopicsList, setShowTopicsList] = React.useState(false);
   const [currTopic, setCurrTopic] = React.useState("topnews");
-  const newslist = React.useRef();
+  const [searchQuery, setSearchQuery] = React.useState("");
   
   function handleTopicClick(key){
     setCurrTopic(key);
-    newslist.current.updateArticles(key);
   }
   
   return (<>
-    <Header doSearch={(query)=>newslist.current.updateArticles("search", query)} search/>
+    <Header doSearch={setSearchQuery} search/>
     <Topics>
       <Topic onClick={()=>setShowTopicsList(l=>!l)}><MdAdd size="1.5em"/></Topic>
       <Topic onClick={()=>handleTopicClick("topnews")} active={currTopic === "topnews"}>Top News</Topic>
@@ -40,7 +39,7 @@ export default function Home(){
         })}
         </SelectTopic>
       }
-      <NewsList topic={currTopic} ref={newslist}/>
+      <NewsList topic={currTopic} query={searchQuery}/>
     </Content>
     <Footer/>
   </>);

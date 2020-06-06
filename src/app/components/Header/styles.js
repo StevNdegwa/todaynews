@@ -64,4 +64,22 @@ margin:0.5em 0;
 @media only screen and (max-width: 700px){
   font-size:1.5em;
 }
-`
+`;
+
+export const Select = styled.select`
+min-width:100px;
+min-height:30px;
+border-radius:3px;
+border:1px solid #e0e0e0;
+background-color: #eeeeee;
+cursor:pointer;
+color:#424242;
+scrollbar-width:auto;
+`;
+
+export const Option = styled.option`
+border:1px solid #e0e0e0;
+background-color: #eeeeee;
+cursor:pointer;
+color:#424242;
+`;

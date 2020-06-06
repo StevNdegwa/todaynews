@@ -8,8 +8,12 @@ import Home from "./components/Home";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs";
 
+import SiteContext from "./SiteContext";
+
 function App() {
+  const [country, setCountry] = React.useState("ke");
   return (<Router>
+      <SiteContext.Provider value={{country, setCountry:(c)=>setCountry(c)}}>
       <IconContext.Provider value={{className:"news-app-icons"}}>
         <Switch>
           <Route path="/about" component={About}/>
@@ -17,6 +21,7 @@ function App() {
           <Route path="/" exact component={Home}/>
         </Switch>
       </IconContext.Provider>
+      </SiteContext.Provider>
     </Router>);
 }
 
