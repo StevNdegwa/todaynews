@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-import {Row, Control, Select} from "../styled-comp";
+import {Control, Select} from "../styled-comp";
+
+export const Form = styled.form`
+grid-column-start:1;
+display:flex;
+margin:0.5em;
+`;
 
 export const Search = styled.button`
 background-color:transparent;
@@ -17,7 +23,7 @@ width:200px;
 transition:width 1s;
 @media only screen and (min-width: 700px){
   &:focus{
-    width:300px;
+    width:350px;
   }
 }
 @media only screen and (max-width: 700px){
@@ -26,12 +32,20 @@ transition:width 1s;
 }
 `;
 
-export const Nav = styled(Row)`
+export const Nav = styled.header`
+grid-column: 1 /span 4;
+display:grid;
+grid-template-columns: 15% 10% 60% 10% 5%;
+width:100%;
 height:50px;
-line-height:50px;
 `;
 
-export const HControl=styled(Control)`
+export const MControl=styled(Control)`
+height:50px;
+grid-column-start:5;
+`;
+
+export const FControl=styled(Control)`
 height:50px;
 `;
 
@@ -66,6 +80,8 @@ margin:0.5em 0;
 }
 `;
 export const HSelect = styled(Select)`
-min-width:100px;
+width:100px;
 height:30px;
+grid-column-start:4;
+margin:1em;
 `;
