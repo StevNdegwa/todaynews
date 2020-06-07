@@ -35,16 +35,16 @@ transition:width 1s;
 export const Nav = styled.header`
 grid-column: 1 /span 4;
 display:grid;
-grid-template-columns: 15% 10% 60% 10% 5%;
+grid-template-columns: 15% 10% 30% 30% 10% 5%;
 width:100%;
 height:50px;
 `;
 
 export const MControl=styled(Control)`
 height:50px;
-grid-column-start:5;
+grid-column-start:6;
 @media only screen and (max-width: 700px){
-  grid-column-start:4;
+  grid-column-start:5;
 }
 `;
 
@@ -85,9 +85,9 @@ margin:0.5em 0;
 export const HSelect = styled(Select)`
 width:100px;
 height:30px;
-grid-column-start:4;
+grid-column-start:5;
 margin:1em;
 @media only screen and (max-width: 700px){
-  grid-column-start:3;
+  grid-column-start:4;
 }
 `;
