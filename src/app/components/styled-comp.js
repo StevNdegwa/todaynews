@@ -33,3 +33,18 @@ border-radius:50%;
 animation:${loadAnim} 1s linear infinite;
 margin:${(props)=>(!!props.size ? props.size : "30px")} auto;
 `;
+
+export const Select = styled.select`
+border-radius:3px;
+border:1px solid #e0e0e0;
+background-color: #eeeeee;
+cursor:pointer;
+color:#424242;
+scrollbar-width:auto;
+&>option{
+  border:1px solid #e0e0e0;
+  background-color: #eeeeee;
+  cursor:pointer;
+  color:#424242;
+}
+`;

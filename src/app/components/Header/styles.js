@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Row, Control} from "../styled-comp";
+import {Row, Control, Select} from "../styled-comp";
 
 export const Search = styled.button`
 background-color:transparent;
@@ -65,21 +65,7 @@ margin:0.5em 0;
   font-size:1.5em;
 }
 `;
-
-export const Select = styled.select`
+export const HSelect = styled(Select)`
 min-width:100px;
-min-height:30px;
-border-radius:3px;
-border:1px solid #e0e0e0;
-background-color: #eeeeee;
-cursor:pointer;
-color:#424242;
-scrollbar-width:auto;
-`;
-
-export const Option = styled.option`
-border:1px solid #e0e0e0;
-background-color: #eeeeee;
-cursor:pointer;
-color:#424242;
+height:30px;
 `;

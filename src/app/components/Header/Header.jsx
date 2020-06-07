@@ -3,7 +3,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {MdMenu, MdClear, MdSearch} from "react-icons/md"
 
-import {Ul, Li, Nav, HControl, Search, SearchInput, Select, Option} from "./styles";
+import {Ul, Li, Nav, HControl, Search, SearchInput, HSelect} from "./styles";
 import SiteContext from "../../SiteContext";
 
 const {countries} = require("../../data/countries.json")
@@ -37,16 +37,17 @@ export default function Header({search,doSearch}){
         </form>
       </HControl>}
       <HControl>
-        <Select defaultValue={site.country} onChange={handleCountrySelection}>
+        <HSelect defaultValue={site.country} onChange={handleCountrySelection}>
           {countries.map((c)=>{
-            return (<Option key={c.key} value={c.key} >{c.name}</Option>)
+            return (<option key={c.key} value={c.key} >{c.name}</option>)
           })}
-        </Select>
+        </HSelect>
       </HControl>
       <HControl onClick={()=>showNav(n=>!n)}>{nav ? <MdClear size="2em"/> :<MdMenu size="2em"/>}</HControl>
     </Nav>
     <Ul show={nav} className="site-nav">
       <Li><Link to="/">Home</Link></Li>
+      <Li><Link to="/c19tracker">Covid-19 Tracker</Link></Li>
       <Li><Link to="/about">About</Link></Li>
       <Li><Link to="/contact-us">Contact Us</Link></Li>
     </Ul>

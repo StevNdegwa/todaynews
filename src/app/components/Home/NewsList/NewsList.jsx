@@ -26,8 +26,6 @@ export default function NewsList({topic, query}){
   const site = React.useContext(SiteContext);
   
   React.useEffect(()=>{
-    setCurrTopic(topic);
-    setCurrQuery(query);
     updateArticles(topic, query);
     return ()=>{
       setArticles({});
@@ -58,11 +56,11 @@ export default function NewsList({topic, query}){
       setNetError(false);
       try{
         const article = await getNewsArticles(topic, query, site.country);
-        setArticles((state)=>{
-          return {...state.articles, [topic]:article}
-        });
         setLoading(false);
         setNetError(!!article ? (article.length === 0) : true);
+        setArticles((state)=>{
+          return {...state, [topic]:article}
+        });
       }catch(error){
         console.log(error)
         setLoading(false);

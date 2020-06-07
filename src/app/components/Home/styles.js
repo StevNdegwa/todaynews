@@ -34,7 +34,7 @@ export const Content = styled.div`
 position:relative;
 display:grid;
 background-color:#eeeeee;
-grid-column:1 /span 12;
+grid-column:1 /span 4;
 grid-template-columns:10% 10% 10% 10% 5% 5% 5% 5% 10% 10% 10% 10%;
 `;
 
