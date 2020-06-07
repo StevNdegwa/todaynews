@@ -43,6 +43,9 @@ height:50px;
 export const MControl=styled(Control)`
 height:50px;
 grid-column-start:5;
+@media only screen and (max-width: 700px){
+  grid-column-start:4;
+}
 `;
 
 export const FControl=styled(Control)`
@@ -84,4 +87,7 @@ width:100px;
 height:30px;
 grid-column-start:4;
 margin:1em;
+@media only screen and (max-width: 700px){
+  grid-column-start:3;
+}
 `;
