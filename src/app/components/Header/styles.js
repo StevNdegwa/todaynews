@@ -35,16 +35,16 @@ transition:width 1s;
 export const Nav = styled.header`
 grid-column: 1 /span 4;
 display:grid;
-grid-template-columns: 15% 10% 30% 30% 10% 5%;
+grid-template-columns: 15% 10% 30% 25% 10% 5% 5%;
 width:100%;
 height:50px;
 `;
 
 export const MControl=styled(Control)`
 height:50px;
-grid-column-start:6;
+grid-column-start:7;
 @media only screen and (max-width: 700px){
-  grid-column-start:5;
+  grid-column-start:6;
 }
 `;
 
