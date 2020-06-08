@@ -19,8 +19,13 @@ export default function Home(){
     setCurrTopic(key);
   }
   
+  function handleHeaderSearch(query){
+    setCurrTopic("search");
+    setSearchQuery(query);
+  }
+  
   return (<>
-    <Header doSearch={setSearchQuery} search/>
+    <Header doSearch={handleHeaderSearch} search/>
     <Topics>
       <Topic onClick={()=>setShowTopicsList(l=>!l)}><MdAdd size="1.5em"/></Topic>
       <Topic onClick={()=>handleTopicClick("topnews")} active={currTopic === "topnews"}>Top News</Topic>

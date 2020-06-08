@@ -30,7 +30,7 @@ export default function NewsList({topic, query}){
     return ()=>{
       setArticles({});
     }
-  }, [topic, site.country, query])
+  }, [topic, site.country])
   
   function topicImage(){
     let images = {
@@ -79,10 +79,13 @@ export default function NewsList({topic, query}){
 
   return (<>
     <List>
-    {(currTopic === "search") ? <><Item><h2><MdChevronRight/><span>Search Results:</span></h2><p>{currQuery}</p></Item></> : <TopicImg src={topicImage()} className="topicImage"/>}
+    {(currTopic === "search") ? 
+      <><Item><h2><MdChevronRight/><span>Search Results:</span></h2><p>{currQuery}</p></Item></> : 
+      <TopicImg src={topicImage()} className="topicImage"/>
+    }
     <hr/>
     {loading && <Item><NewsLoader size="50px"/></Item>}
-    {netError.error&&<Item><Control><MdCancel size="1.5em"/>{netError.message}</Control></Item>}
+    {netError.error && <Item><Control><MdCancel size="1.5em"/>{netError.message}</Control></Item>}
     {articles[currTopic] && articles[currTopic].map((article, idx)=>{
       return (<Item key={idx}>
         <article>
