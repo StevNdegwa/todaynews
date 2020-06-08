@@ -30,6 +30,9 @@ transition:width 1s;
   font-size:0.8em;
   width:150px;
 }
+@media only screen and (max-width: 350px){
+  width:100px;
+}
 `;
 
 export const Nav = styled.header`
@@ -89,5 +92,8 @@ grid-column-start:5;
 margin:1em;
 @media only screen and (max-width: 700px){
   grid-column-start:4;
+}
+@media only screen and (max-width: 350px){
+  width:70px;
 }
 `;

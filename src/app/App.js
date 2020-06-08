@@ -9,8 +9,6 @@ import About from "./components/About";
 import ContactUs from "./components/ContactUs";
 import SiteContext from "./SiteContext";
 
-import {Loader} from "./components/styled-comp";
-
 const C19Tracker = React.lazy(()=>import("./components/C19Tracker"))
 
 function App() {
@@ -20,7 +18,7 @@ function App() {
       <IconContext.Provider value={{className:"news-app-icons"}}>
         <Switch>
           <Route path="/c19tracker">
-            <React.Suspense fallback={<Loader/>}>
+            <React.Suspense fallback={<div>Please Wait...</div>}>
               <C19Tracker/>
             </React.Suspense>
           </Route>

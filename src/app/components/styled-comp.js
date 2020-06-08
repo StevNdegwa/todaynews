@@ -41,10 +41,13 @@ background-color: #eeeeee;
 cursor:pointer;
 color:#424242;
 scrollbar-width:auto;
-&>option{
-  border:1px solid #e0e0e0;
-  background-color: #eeeeee;
+& > option{
   cursor:pointer;
-  color:#424242;
+  border:none;
+  &:hover{
+    background-color: #eeeeee;
+    cursor:pointer;
+    border:none;
+  }
 }
 `;

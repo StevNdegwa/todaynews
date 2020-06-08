@@ -7,7 +7,7 @@ import Globe from "./Globe.jsx";
 
 import {fetchSummary} from "../../lib/news/fetch-c19";
 
-import {Main, Section, Title, Content, Stat, CountriesStats, CSelect, CLoader} from "./styles";
+import {Main, Section, Title, Content, Stat, CountriesStats, CSelect, CLoader, Error} from "./styles";
 
 export default function C19Tracker(){
   const [currCountry, setCurrCountry] = React.useState("KE");
@@ -31,12 +31,13 @@ export default function C19Tracker(){
     setLoading(true);
     try{
       const s = await fetchSummary();
-      if(!s.Countries){
-        throw new Error("Connection Error")
+      if(s.Countries && s.Global){
+        setSummary(s);
+        findCountryData(s.Countries);
+        setLoading(false);
+      }else{
+        setError({error:true, message:"No results to display 😓. Something must be wrong."});
       }
-      setSummary(s);
-      findCountryData(s.Countries);
-      setLoading(false);
     }catch(error){
       setLoading(false);
       setError({error:true, message:"Sorry! A connection error occured"});
@@ -55,7 +56,7 @@ export default function C19Tracker(){
     <Header/>
     <Main>
       {loading && <CLoader size="50px"/>}
-      {error.error && <div>{error.message}</div>}
+      {error.error && <Error>{error.message}</Error>}
       <Section>
         <Title>Global</Title>
         <Content>

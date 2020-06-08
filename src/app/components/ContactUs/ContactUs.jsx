@@ -11,7 +11,7 @@ export default function ContactUs(){
     <Content>
       <Contacts>
         <Item><h2>To reach out</h2></Item>
-        <Item><MdEmail size="1.2em"/> <p>sndegwa.n@yahoo.com</p></Item>
+        <Item><MdEmail size="1.2em"/> <p>sndegwa.n@outlook.com</p></Item>
         <Item><MdCall size="1.2em"/> <p>0702 297 962</p></Item>
       </Contacts>
     </Content>

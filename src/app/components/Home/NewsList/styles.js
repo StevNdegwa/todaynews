@@ -87,10 +87,16 @@ grid-column-start:4
 `;
 
 export const TopicImg = styled(Item)`
-height:200px;
 background-color:#eeeeee;
-background-image:${(props)=>`url(${props.src})`};
+background-image:${(props)=>`url(${props.srcSmall})`};
 border-radius:5px 5px 0 0;
 background-repeat:no-repeat;
 background-size:cover;
+@media only screen and (min-width: 700px){
+  background-image:${(props)=>`url(${props.src})`};
+  height:200px;
+}
+@media only screen and (max-width: 700px){
+  height:100px;
+}
 `;

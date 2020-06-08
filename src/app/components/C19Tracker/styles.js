@@ -14,6 +14,9 @@ padding:0.5em;
 
 export const Title = styled.h2`
 font-weight:600;
+@media only screen and (max-width: 700px){
+  font-size:1.2em;
+}
 `;
 
 export const Content = styled.div`
@@ -48,6 +51,15 @@ margin:0.5em;
   font-weight:bold;
   text-align:center;
 }
+@media only screen and (max-width: 700px){
+  min-width:150px;
+  height:80px;
+  &>div{
+    line-height:30px;
+    font-size:1.3em;
+    font-weight:700;
+  }
+}
 `;
 
 export const CountriesStats = styled.ul`
@@ -59,6 +71,25 @@ padding:0.5em;
   margin:0.5em 0;
   line-height:40px;
   font-size:1.2em;
+}
+@media only screen and (max-width: 700px){
+  min-width:300px;
+  width:300px;
+  &>li{
+    height:30px;
+    line-height:30px;
+    font-size:1em;
+  }
+}
+@media only screen and (max-width: 350px){
+  min-width:150px;
+  width:150px;
+  &>li{
+    height:30px;
+    margin:0.5em 0;
+    line-height:30px;
+    font-size:0.8em;
+  }
 }
 `;
 
@@ -72,4 +103,21 @@ export const CLoader = styled(Loader)`
 border-top-style:dotted;
 margin:0 auto;
 border-width:5px;
+`;
+
+export const Svg = styled.svg`
+transform:scale(1);
+width:600px;
+height:400px;
+@media only screen and (max-width: 700px){
+  transform:scale(0.8);
+  width:500px;
+  height:300px;
+}
+`;
+
+export const Error = styled.div`
+text-align:center;
+font-size:1.3em;
+font-weight:600;
 `;

@@ -13,6 +13,7 @@ import technology_img from "./images/technology.jpg";
 import world_img from "./images/world.jpg";
 import sports_img from "./images/sports.jpg";
 import city_img from "./images/city.jpg";
+import news_img from "./images/news-img.jpg";
 
 const {searches} = require("../../../data/popular-searches.json");
 
@@ -81,7 +82,7 @@ export default function NewsList({topic, query}){
     <List>
     {(currTopic === "search") ? 
       <><Item><h2><MdChevronRight/><span>Search Results:</span></h2><p>{currQuery}</p></Item></> : 
-      <TopicImg src={topicImage()} className="topicImage"/>
+      <TopicImg src={topicImage()} srcSmall={news_img} className="topicImage"/>
     }
     <hr/>
     {loading && <Item><NewsLoader size="50px"/></Item>}
