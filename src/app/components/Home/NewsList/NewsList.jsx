@@ -31,7 +31,7 @@ export default function NewsList({topic, query}){
     return ()=>{
       setArticles({});
     }
-  }, [topic, site.country])
+  }, [topic, site.country,query])
   
   function topicImage(){
     let images = {
@@ -59,7 +59,7 @@ export default function NewsList({topic, query}){
         const article = await getNewsArticles(topic, query, site.country);
         setLoading(false);
         if(!article || (article.length === 0)){
-          setNetError({error:true, message:"No results to display 😓. Something must be wrong."});
+          return setNetError({error:true, message:"No results to display 😓. Something must be wrong."});
         }
         
         setArticles((state)=>{
@@ -92,6 +92,9 @@ export default function NewsList({topic, query}){
         <article>
           <h4><a href={article.url} target="_blank">{article.title}</a></h4>
           <p>{article.description}</p>
+          <ul>
+            <li><b>Source: </b><a href={article.source.url} target="_blank">{article.source.name}</a></li>
+          </ul>
         </article>
       </Item>)
     })}

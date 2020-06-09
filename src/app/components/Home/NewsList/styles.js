@@ -46,6 +46,15 @@ padding:0.5em;
       color:#00c853;
     }
   }
+  &>ul{
+    list-style-type:none;
+    padding:0.5em 1em;
+    &>li>a{
+      text-decoration:none;
+      color:#424242;
+      font-style:italic;
+    }
+  }
 }
 @media only screen and (max-width: 700px){
   &>h2{
