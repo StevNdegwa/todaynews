@@ -116,6 +116,15 @@ height:400px;
 }
 `;
 
+export const Chart = styled.div`
+width:600px;
+height:400px;
+@media only screen and (max-width: 700px){
+  width:500px;
+  height:300px;
+}
+`;
+
 export const Error = styled.div`
 text-align:center;
 font-size:1.3em;
