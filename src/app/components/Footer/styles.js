@@ -13,7 +13,7 @@ color:white;
 export const Top = styled.div`
 padding:0.5em 2em;
 &>ul{
-  list-style-type:square;
+  list-style-type:none;
 }
 `;
 

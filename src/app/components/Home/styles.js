@@ -57,5 +57,6 @@ cursor:pointer;
 &:hover{
   font-weight:600;
   color:#00c853;
+  background-color:#e0e0e0;
 }
 `;
