@@ -3,6 +3,7 @@ import React from "react";
 import {format} from "d3-format";
 
 import Header from "../Header";
+import Footer from "../Footer";
 import Globe from "./Globe.jsx";
 
 import {fetchSummary} from "../../lib/news/fetch-c19";
@@ -58,29 +59,29 @@ export default function C19Tracker(){
       {loading && <CLoader size="50px"/>}
       {error.error && <Error>{error.message}</Error>}
       <Section>
-        <Title>Global</Title>
+        <Title>Global Overview</Title>
         <Content>
-          <Stat>
+          <Stat paint="#512da8">
             <h5>New Confirmed</h5>
             <div>{summary.Global && numsFormat(summary.Global.NewConfirmed)}</div>
           </Stat>
-          <Stat>
+          <Stat paint="#512da8">
             <h5>Total Confirmed</h5>
             <div>{summary.Global && numsFormat(summary.Global.TotalConfirmed)}</div>
           </Stat>
-          <Stat>
+          <Stat paint="#e53935">
             <h5>New Deaths</h5>
             <div>{summary.Global && numsFormat(summary.Global.NewDeaths)}</div>
           </Stat>
-          <Stat>
+          <Stat paint="#e53935">
             <h5>Total Deaths</h5>
             <div>{summary.Global && numsFormat(summary.Global.TotalDeaths)}</div>
           </Stat>
-          <Stat>
+          <Stat paint="#00c853 ">
             <h5>New Recovered</h5>
             <div>{summary.Global && numsFormat(summary.Global.NewRecovered)}</div>
           </Stat>
-          <Stat>
+          <Stat paint="#00c853 ">
             <h5>Total Recovered</h5>
             <div>{summary.Global && numsFormat(summary.Global.TotalRecovered)}</div>
           </Stat>
@@ -109,5 +110,6 @@ export default function C19Tracker(){
         </Content>
       </Section>
     </Main>
+    <Footer/>
   </>)
 }

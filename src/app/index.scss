@@ -36,3 +36,8 @@ div#root{
   height:0px;
   transition: height 1s linear;
 }
+
+.select_topic{
+  display:none;
+  transition:display 2s;
+}

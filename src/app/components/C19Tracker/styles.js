@@ -36,8 +36,10 @@ background-color:white;
 border:1px outset white;
 border-radius:5px;
 margin:0.5em;
+cursor:pointer;
+box-shadow:1px 1px 3px #424242;
 &>h5{
-  background-color:#424242;
+  background-color:${(props)=>(props.paint || "#424242")};
   color:white;
   border-radius:5px 5px 0 0;
   height:25px;
@@ -108,8 +110,7 @@ border-width:5px;
 export const Svg = styled.svg`
 transform:scale(1);
 width:600px;
-height:400px;
-
+height:400px;cursor:pointer;
 `;
 
 export const Chart = styled.div`
@@ -121,4 +122,28 @@ export const Error = styled.div`
 text-align:center;
 font-size:1.3em;
 font-weight:600;
+`;
+
+export const Footer = styled.footer`
+grid-column:1 /span 12;
+background-color:#424242;
+color:white;
+& a{
+  color:white;
+  text-decoration:none;
+}
+`;
+
+export const Top = styled.div`
+padding:0.5em 2em;
+&>ul{
+  list-style-type:none;
+}
+`;
+
+export const Bottom = styled.div`
+display:flex;
+justify-content:space-between;
+padding:0.5em 1em;
+background-color:#616161;
 `;
