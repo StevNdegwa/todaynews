@@ -17,9 +17,8 @@ export default function Home(){
   const [searchQuery, setSearchQuery] = React.useState("");
   
   document.body.addEventListener("click",(evt)=>{
-    evt.preventDefault();
     setShowTopicsList(false)
-  })
+  }, true)
   
   function handleTopicClick(key){
     setCurrTopic(key);
@@ -44,7 +43,7 @@ export default function Home(){
       })}
     </Topics>
     <Content>
-      {<SelectTopic className="select_topic" display={showTopicsList}>
+      {<SelectTopic className="select_topic" show={showTopicsList}>
         {list.map((l)=>{
           return (<TopicOption key={l.key} onClick={()=>{changeTopics({type:"add", topic:l});}}>
             {l.label}

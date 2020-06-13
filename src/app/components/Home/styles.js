@@ -47,7 +47,7 @@ position:absolute;
 z-index:100;
 background-color:white;
 box-shadow:2px 12px 20px 2px #424242;
-display:${(props)=>(props.display ? "block" : "none")};
+display:${(props)=>(props.show ? "block" : "none")};
 `;
 
 export const TopicOption = styled.li`
