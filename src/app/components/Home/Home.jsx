@@ -16,9 +16,10 @@ export default function Home(){
   const [currTopic, setCurrTopic] = React.useState("topnews");
   const [searchQuery, setSearchQuery] = React.useState("");
   
-  /* document.body.addEventListener("click",()=>{
+  document.body.addEventListener("click",(evt)=>{
+    evt.preventDefault();
     setShowTopicsList(false)
-  }) */
+  })
   
   function handleTopicClick(key){
     setCurrTopic(key);
@@ -45,7 +46,7 @@ export default function Home(){
     <Content>
       {<SelectTopic className="select_topic" display={showTopicsList}>
         {list.map((l)=>{
-          return (<TopicOption key={l.key} onClick={()=>{changeTopics({type:"add", topic:l}); setShowTopicsList(l=>!l)}}>
+          return (<TopicOption key={l.key} onClick={()=>{changeTopics({type:"add", topic:l});}}>
             {l.label}
           </TopicOption>)
         })}
