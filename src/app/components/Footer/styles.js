@@ -22,4 +22,9 @@ display:flex;
 justify-content:space-between;
 padding:0.5em 1em;
 background-color:#616161;
+&>p{
+  min-width:50px;
+  display:flex;
+  justify-content:space-between;
+}
 `;

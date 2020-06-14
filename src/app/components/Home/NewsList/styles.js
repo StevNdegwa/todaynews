@@ -49,10 +49,19 @@ padding:0.5em;
   &>ul{
     list-style-type:none;
     padding:0.5em 1em;
-    &>li>a{
-      text-decoration:none;
-      color:#424242;
-      font-style:italic;
+    &>li{
+      min-height:30px;
+      line-height:30px;
+      &>a{
+        text-decoration:none;
+        color:#424242;
+        font-style:italic;
+        &>svg{
+          height:1.5em;
+          width:1.5em;
+          margin-left:10px;
+        }
+      }
     }
   }
 }

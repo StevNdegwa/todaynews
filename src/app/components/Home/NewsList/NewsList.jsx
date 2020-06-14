@@ -2,11 +2,13 @@ import React from "react";
 import {fetchTopics, fetchTopNews, fetchSearchNews} from "../../../lib/news/fetch-news";
 
 import {MdChevronRight,MdCancel} from "react-icons/md";
+import {FaFacebook, FaTwitter, FaWhatsapp} from "react-icons/fa";
+
+
 import {Control} from "../../styled-comp";
 import {List, Item, PSearches, Search, NewsLoader, TopicImg} from "./styles";
 
 import SiteContext from "../../../SiteContext";
-
 import business_img from "./images/business.jpg";
 import health_img from "./images/health.jpg";
 import technology_img from "./images/technology.jpg";
@@ -94,6 +96,11 @@ export default function NewsList({topic, query}){
           <p>{article.description}</p>
           <ul>
             <li><b>Source: </b><a href={article.source.url} target="_blank">{article.source.name}</a></li>
+            <li>
+              <a href={`#`} target="_blank"><FaFacebook color="blue"/></a>
+              <a href={`https://twitter.com/share?text=${encodeURIComponent(article.title)}&url=${article.url}`} target="_blank"><FaTwitter color="#64b5f6"/></a>
+              <a href={`https://api.whatsapp.com/?text=${article.url}`} target="_blank"><FaWhatsapp color="#00e676"/></a>
+            </li>
           </ul>
         </article>
       </Item>)
