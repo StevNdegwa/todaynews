@@ -10,8 +10,8 @@ export default function Footer({children}){
     <Bottom>
       <p>Copyright &copy; {new Date().getFullYear()}</p>
       <p>
-        <a href={`https://facebook.com`} target="_blank"><FaFacebookSquare color="blue" size="1.3em"/></a>
-        <a href={`https://twitter.com`} target="_blank"><FaTwitterSquare color="#64b5f6" size="1.3em"/></a>
+        <a href={`https://facebook.com`} target="_blank" rel="noopener noreferrer"><FaFacebookSquare color="blue" size="1.3em"/></a>
+        <a href={`https://twitter.com`} target="_blank" rel="noopener noreferrer"><FaTwitterSquare color="#64b5f6" size="1.3em"/></a>
       </p>
       <p>Powered by <b>GNews</b></p>
     </Bottom>

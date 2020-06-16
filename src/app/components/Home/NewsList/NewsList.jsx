@@ -92,15 +92,15 @@ export default function NewsList({topic, query}){
     {articles[currTopic] && articles[currTopic].map((article, idx)=>{
       return (<Item key={idx}>
         <article>
-          <h4><a href={article.url} target="_blank">{article.title}</a></h4>
+          <h4><a href={article.url} target="_blank" rel="noopener noreferrer">{article.title}</a></h4>
           <p>{article.description}</p>
           <ul>
-            <li><b>Source: </b><a href={article.source.url} target="_blank">{article.source.name}</a></li>
+            <li><b>Source: </b><a href={article.source.url} target="_blank" rel="noopener noreferrer">{article.source.name}</a></li>
             <li>
-              <a href="#"><FaShareAlt color="blue"/></a>
-              <a href={`#`} target="_blank" alt="Facebook"><FaFacebook color="blue" title="Facebook"/></a>
-              <a href={`https://twitter.com/share?text=${encodeURIComponent(article.title)}&url=${article.url}`} target="_blank" alt="Twitter"><FaTwitter color="#64b5f6" title="Twitter"/></a>
-              <a href={`https://api.whatsapp.com/?text=${article.url}`} target="_blank"  alt="Whatsapp"><FaWhatsapp color="#00e676" title="Whatsapp"/></a>
+              <a href="#"><FaShareAlt/></a>
+              <a href={`#`} target="_blank" rel="noopener noreferrer" alt="Facebook"><FaFacebook color="blue" title="Facebook"/></a>
+              <a href={`https://twitter.com/share?text=${encodeURIComponent(article.title)}&url=${article.url}`} target="_blank" rel="noopener noreferrer" alt="Twitter"><FaTwitter color="#64b5f6" title="Twitter"/></a>
+              <a href={`https://api.whatsapp.com/?text=${article.url}`} target="_blank" rel="noopener noreferrer"  alt="Whatsapp"><FaWhatsapp color="#00e676" title="Whatsapp"/></a>
             </li>
           </ul>
         </article>

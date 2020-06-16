@@ -84,7 +84,7 @@ export default function Home(){
             <summary><b><Link to="/c19tracker">The latest statistics on covid-19 Pandemic</Link></b></summary>
             <p>
               Coronavirus disease 2019 is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-C0V-2)
-              <br/><a href="https://en.wikipedia.org/wiki/COVID-19" target="_blank"><i>Read More...</i></a>
+              <br/><a href="https://en.wikipedia.org/wiki/COVID-19" target="_blank" rel="noopener noreferrer"><i>Read More...</i></a>
             </p>
           </details>
         </li>
