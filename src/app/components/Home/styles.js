@@ -1,6 +1,53 @@
 import styled from "styled-components";
 
-import {Row, Control} from "../styled-comp";
+import {Row, Control, Select} from "../styled-comp";
+
+export const Form = styled.form`
+grid-column-start:1;
+display:flex;
+margin:0.5em;
+`;
+
+export const Search = styled.button`
+background-color:transparent;
+border:none;
+`;
+
+export const SearchInput = styled.input`
+border:none;
+outline:none;
+border-bottom: 2px solid #212121;
+font-size:1.3em;
+padding:0.25em;
+width:200px;
+transition:width 1s;
+@media only screen and (min-width: 700px){
+  &:focus{
+    width:350px;
+  }
+}
+@media only screen and (max-width: 700px){
+  font-size:0.8em;
+  width:150px;
+}
+@media only screen and (max-width: 350px){
+  width:100px;
+}
+`;
+
+export const HSelect = styled(Select)`
+width:100px;
+height:30px;
+grid-column-start:5;
+margin:1em;
+@media only screen and (max-width: 700px){
+  grid-column-start:4;
+}
+@media only screen and (max-width: 350px){
+  width:70px;
+}
+`;
+
 
 export const Topics = styled(Row)`
 background-color:#424242;

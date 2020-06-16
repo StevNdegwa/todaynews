@@ -2,7 +2,7 @@ import React from "react";
 import {fetchTopics, fetchTopNews, fetchSearchNews} from "../../../lib/news/fetch-news";
 
 import {MdChevronRight,MdCancel} from "react-icons/md";
-import {FaFacebook, FaTwitter, FaWhatsapp} from "react-icons/fa";
+import {FaFacebook, FaTwitter, FaWhatsapp, FaShareAlt} from "react-icons/fa";
 
 
 import {Control} from "../../styled-comp";
@@ -97,9 +97,10 @@ export default function NewsList({topic, query}){
           <ul>
             <li><b>Source: </b><a href={article.source.url} target="_blank">{article.source.name}</a></li>
             <li>
-              <a href={`#`} target="_blank"><FaFacebook color="blue"/></a>
-              <a href={`https://twitter.com/share?text=${encodeURIComponent(article.title)}&url=${article.url}`} target="_blank"><FaTwitter color="#64b5f6"/></a>
-              <a href={`https://api.whatsapp.com/?text=${article.url}`} target="_blank"><FaWhatsapp color="#00e676"/></a>
+              <a href="#"><FaShareAlt color="blue"/></a>
+              <a href={`#`} target="_blank" alt="Facebook"><FaFacebook color="blue" title="Facebook"/></a>
+              <a href={`https://twitter.com/share?text=${encodeURIComponent(article.title)}&url=${article.url}`} target="_blank" alt="Twitter"><FaTwitter color="#64b5f6" title="Twitter"/></a>
+              <a href={`https://api.whatsapp.com/?text=${article.url}`} target="_blank"  alt="Whatsapp"><FaWhatsapp color="#00e676" title="Whatsapp"/></a>
             </li>
           </ul>
         </article>

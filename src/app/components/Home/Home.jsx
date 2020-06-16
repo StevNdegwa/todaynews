@@ -1,13 +1,15 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {MdAdd, MdClear} from "react-icons/md";
+import {MdAdd, MdClear, MdSearch} from "react-icons/md";
 
 import Header from "../Header";
 import Footer from "../Footer";
 import NewsList from "./NewsList";
+import SiteContext from "../../SiteContext";
 
-import {Topics, Topic, SelectTopic, TopicOption,Content} from "./styles";
+import {Topics, Topic, SelectTopic, TopicOption, Content, Form, SearchInput, Search, HSelect} from "./styles";
 
+const {countries} = require("../../data/countries.json")
 const {list} = require("../../data/topics.json");
 
 export default function Home(){
@@ -15,6 +17,9 @@ export default function Home(){
   const [showTopicsList, setShowTopicsList] = React.useState(false);
   const [currTopic, setCurrTopic] = React.useState("topnews");
   const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchInput, setSearchInput] = React.useState("");
+  
+  const site = React.useContext(SiteContext);
   
   document.body.addEventListener("click",(evt)=>{
     setShowTopicsList(false)
@@ -24,13 +29,31 @@ export default function Home(){
     setCurrTopic(key);
   }
   
-  function handleHeaderSearch(query){
+  function handleSearchInputChange(evt){
+    setSearchInput(evt.target.value);
+  }
+  
+  function submitSearch(evt){
+    evt.preventDefault();
     setCurrTopic("search");
-    setSearchQuery(query);
+    setSearchQuery(searchInput);
+    setSearchInput("");
+  }
+  
+  function handleCountrySelection(evt){
+    return site.setCountry(evt.target.value)
   }
   
   return (<>
-    <Header doSearch={handleHeaderSearch} search/>
+    <Header>
+      <HSelect defaultValue={site.country} onChange={handleCountrySelection}>
+        {countries.map((c)=>(<option key={c.key} value={c.key} >{c.name}</option>))}
+      </HSelect>
+      <Form method="POST" onSubmit={submitSearch}>
+        <SearchInput type="search" placeholder="Search a topic ..." onChange={handleSearchInputChange} value={searchInput} required autocomplete="on"/>
+        <Search><MdSearch size="1.5em"/></Search>
+      </Form>
+    </Header>
     <Topics>
       <Topic onClick={()=>setShowTopicsList((show)=>(show ? false : true))}>
         {showTopicsList ? <MdClear size="1.5em"/> : <MdAdd size="1.5em"/>}
