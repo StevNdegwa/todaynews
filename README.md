@@ -2,4 +2,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Uses
 React<br/>
-D3
+D3<br/>
+styled-components<br/>
