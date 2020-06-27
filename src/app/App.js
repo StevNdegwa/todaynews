@@ -7,14 +7,23 @@ import "./index.scss";
 import Home from "./components/Home";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs";
-import Weather from "./components/Weather";
+import WeatherView from "./containers/WeatherView";
 import SiteContext from "./SiteContext";
 
-const C19Tracker = React.lazy(()=>import("./components/C19Tracker"))
+import {configureStore} from "@reduxjs/toolkit";
+import {Provider} from "react-redux";
+import reducer from "./features/reducer";
+
+const C19Tracker = React.lazy(()=>import("./components/C19Tracker"));
+
+const reduxStore = configureStore({
+  reducer
+});
 
 function App() {
   const [country, setCountry] = React.useState("ke");
-  return (<Router>
+  return (<Provider store={reduxStore}>
+    <Router>
       <SiteContext.Provider value={{country, setCountry:(c)=>setCountry(c)}}>
       <IconContext.Provider value={{className:"news-app-icons"}}>
         <Switch>
@@ -24,13 +33,15 @@ function App() {
             </React.Suspense>
           </Route>
           <Route path="/about" component={About}/>
-          <Route path="/weather" component={Weather}/>
+          <Route path="/weather" component={WeatherView}/>
           <Route path="/contact-us" component={ContactUs}/>
           <Route path="/" exact component={Home}/>
         </Switch>
       </IconContext.Provider>
       </SiteContext.Provider>
-    </Router>);
+    </Router>
+  </Provider>
+  );
 }
 
 export default App;

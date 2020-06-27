@@ -1,12 +1,18 @@
 import React from 'react';
 import {CSSTransition} from "react-transition-group";
+import {MdChevronRight, MdExpandMore} from "react-icons/md";
 
-import {Ul,Li} from "./styles";
+import {Ul,Li,Control} from "./styles";
 
 import countries from "../../../data/countries-weather.json";
 
-export default function Regions(){
+const Regions = React.memo(({selectCountry})=>{
   const [region, selectRegion] = React.useState("");
+  
+  const Africa = (region === "Africa"),
+    Americas = (region === "Americas"),
+    Asia = (region === "Asia"),
+    Europe = (region === "Europe");
   
   function handleRegionSelection(r){
     if(region === r){
@@ -16,55 +22,69 @@ export default function Regions(){
   }
   
   return (<Ul>
-    <Li show={region === "Africa"}>
-      <h4 onClick={()=>handleRegionSelection("Africa")}>AFRICA</h4>
-      {countriesList(countries.filter((c)=>(c.region === "Africa")), (region === "Africa"))}
+    <Li show={Africa}>
+      <Control onClick={()=>handleRegionSelection("Africa")}>
+        <h4>AFRICA</h4>
+        <div>{Africa ? <MdExpandMore/> : <MdChevronRight/>}</div>
+      </Control>
+      {countriesList(countries.filter((c)=>(c.region === "Africa")), Africa, selectCountry)}
     </Li>
-    <Li show={region === "Americas"}>
-      <h4 onClick={()=>handleRegionSelection("Americas")}>AMERICA</h4>
-      {countriesList(countries.filter((c)=>(c.region === "Americas")), (region === "Americas"))}
+    <Li show={Americas}>
+      <Control onClick={()=>handleRegionSelection("Americas")}>
+        <h4>AMERICA</h4>
+        <div>{Americas ? <MdExpandMore/> : <MdChevronRight/>}</div>
+      </Control>
+      {countriesList(countries.filter((c)=>(c.region === "Americas")), Americas, selectCountry)}
     </Li>
-    <Li show={region === "Asia"}>
-      <h4 onClick={()=>handleRegionSelection("Asia")}>ASIA</h4>
-      {countriesList(countries.filter((c)=>(c.region === "Asia")), (region === "Asia"))}
+    <Li show={Asia}>
+      <Control onClick={()=>handleRegionSelection("Asia")}>
+        <h4>ASIA</h4>
+        <div>{Asia ? <MdExpandMore/> : <MdChevronRight/>}</div>
+      </Control>
+      {countriesList(countries.filter((c)=>(c.region === "Asia")), Asia, selectCountry)}
     </Li>
-    <Li show={region === "Europe"}>
-      <h4 onClick={()=>handleRegionSelection("Europe")}>EUROPE</h4>
-      {countriesList(countries.filter((c)=>(c.region === "Europe")), (region === "Europe"))}
+    <Li show={Europe}>
+      <Control onClick={()=>handleRegionSelection("Europe")}>
+        <h4>EUROPE</h4>
+        <div>{Europe ? <MdExpandMore/> : <MdChevronRight/>}</div>
+      </Control>
+      {countriesList(countries.filter((c)=>(c.region === "Europe")), Europe, selectCountry)}
     </Li>
   </Ul>)
-}
+})
 
-function countriesList(countries, inProp){
+function countriesList(countries, inProp, selectCountry){
   return (
-    <CSSTransition in={inProp} timeout={200} className="c-list">
+    <CSSTransition in={inProp} timeout={200} classNames="c-list">
       <ul className="c-list">
         <div className="col">
           {countries.slice(0,10).map((c)=>{
-            return <li key={c.alpha2Code}>{c.name}</li>
+            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
           })}
         </div>
         <div className="col">
           {countries.slice(10,20).map((c)=>{
-            return <li key={c.alpha2Code}>{c.name}</li>
+            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
           })}
         </div>
         <div className="col">
           {countries.slice(20,30).map((c)=>{
-            return <li key={c.alpha2Code}>{c.name}</li>
+            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
           })}
         </div>
         <div className="col">
           {countries.slice(30,40).map((c)=>{
-            return <li key={c.alpha2Code}>{c.name}</li>
+            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
           })}
         </div>
         <div className="col">
           {countries.slice(40,50).map((c)=>{
-            return <li key={c.alpha2Code}>{c.name}</li>
+            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
           })}
         </div>
       </ul>
     </CSSTransition>
   )
 }
+
+export default Regions;
