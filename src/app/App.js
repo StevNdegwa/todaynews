@@ -7,6 +7,7 @@ import "./index.scss";
 import Home from "./components/Home";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs";
+import Weather from "./components/Weather";
 import SiteContext from "./SiteContext";
 
 const C19Tracker = React.lazy(()=>import("./components/C19Tracker"))
@@ -23,6 +24,7 @@ function App() {
             </React.Suspense>
           </Route>
           <Route path="/about" component={About}/>
+          <Route path="/weather" component={Weather}/>
           <Route path="/contact-us" component={ContactUs}/>
           <Route path="/" exact component={Home}/>
         </Switch>
