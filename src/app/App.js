@@ -7,7 +7,6 @@ import "./index.scss";
 import Home from "./components/Home";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs";
-import WeatherView from "./containers/WeatherView";
 import SiteContext from "./SiteContext";
 
 import {configureStore} from "@reduxjs/toolkit";
@@ -15,6 +14,7 @@ import {Provider} from "react-redux";
 import reducer from "./features/reducer";
 
 const C19Tracker = React.lazy(()=>import("./components/C19Tracker"));
+const TodayWeather = React.lazy(()=>import("./containers/WeatherView"));
 
 const reduxStore = configureStore({
   reducer
@@ -32,8 +32,12 @@ function App() {
               <C19Tracker/>
             </React.Suspense>
           </Route>
+          <Route path="/weather">
+            <React.Suspense fallback={<div>Please Wait...</div>}>
+              <TodayWeather/>
+            </React.Suspense>
+          </Route>
           <Route path="/about" component={About}/>
-          <Route path="/weather" component={WeatherView}/>
           <Route path="/contact-us" component={ContactUs}/>
           <Route path="/" exact component={Home}/>
         </Switch>

@@ -33,10 +33,23 @@ position:absolute;
 display:${(props)=>(props.show ? "block" : "none")};
 height:${(props)=>(props.show ? "auto" : "0px")};
 overflow:hidden;
-transition:height 2s;
+font-size:2.5em;
+&.site-nav-enter{
+  font-size:1em;
+}
+&.site-nav-enter-active{
+  font-size:2.5em;
+  transition:font-size 200ms;
+}
+&.site-nav-exit{
+  font-size:2.5em;
+}
+&.site-nav-exit-active{
+  font-size:1em;
+  transition:font-size 200ms;
+}
 `
 export const Li = styled.li`
-font-size:3em;
 font-weight:bold;
 text-align:center;
 width:100%;
