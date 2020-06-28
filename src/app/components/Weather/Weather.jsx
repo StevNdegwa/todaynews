@@ -4,31 +4,36 @@ import {MdSearch, MdPublic, MdArrowDropDown, MdArrowDropUp} from "react-icons/md
 
 import Header from "../Header";
 import Regions from "./Regions";
-import {Search, Content, Country} from "./styles";
+import CurrentWeather from "./CurrentWeather";
+import {Search, Content, Country, Charts} from "./styles";
 
-export default function Weather({selectCountry, country}){
+export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather}){
   const [showRegions, setShowRegions] = React.useState(false);
   
   return (<>
     <Header>
-      <Country>
-        <div className="ic"><MdPublic/></div>
-        <div className="" title={country.name}>{country.code}</div>
-        <div className="ic" onClick={()=>setShowRegions(s=>!s)}>{showRegions ? <MdArrowDropUp/> : <MdArrowDropDown/>}</div>
-      </Country>
       <Search method="POST">
         <input type="search" placeholder="Search a location"/>
         <button><MdSearch size="1.5em"/></button>
       </Search>
+      <Country onClick={()=>setShowRegions(s=>!s)}>
+        <div className="ic"><MdPublic/></div>
+        <div className="" title={country.name}>{country.code}</div>
+        <div className="ic">{showRegions ? <MdArrowDropUp/> : <MdArrowDropDown/>}</div>
+      </Country>
     </Header>
     <Content>
       {showRegions && <Regions selectCountry={selectCountry}/>}
-      <div>Weather</div>
+      <Charts>
+        <CurrentWeather weather={currentWeather} country={country} loadCurrentWeather={loadCurrentWeather}/>
+      </Charts>
     </Content>
   </>);
 }
 
 Weather.propTypes = {
-  country:ProTypes.string.isRequired,
-  selectCountry:ProTypes.func.isRequired
+  country:ProTypes.object.isRequired,
+  selectCountry:ProTypes.func.isRequired,
+  loadCurrentWeather:ProTypes.func.isRequired,
+  currentWeather:ProTypes.object.isRequired
 }

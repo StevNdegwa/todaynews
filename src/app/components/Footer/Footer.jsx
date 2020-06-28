@@ -13,7 +13,7 @@ export default function Footer({children}){
         <a href={`https://facebook.com`} target="_blank" rel="noopener noreferrer"><FaFacebookSquare color="blue" size="1.3em"/></a>
         <a href={`https://twitter.com`} target="_blank" rel="noopener noreferrer"><FaTwitterSquare color="#64b5f6" size="1.3em"/></a>
       </p>
-      <p>Powered by <b>GNews</b></p>
+      <p>Powered by <b>&nbsp;GNews</b></p>
     </Bottom>
   </MyFooter>)
 }

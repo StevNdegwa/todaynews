@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Row, Control, Select} from "../styled-comp";
+import {Control, Select} from "../styled-comp";
 
 export const Form = styled.form`
 grid-column-start:1;
@@ -49,16 +49,18 @@ margin:1em;
 `;
 
 
-export const Topics = styled(Row)`
-background-color:#424242;
+export const Topics = styled.div`
+background-image:linear-gradient(#424242,#616161,#616161,#424242);
+box-shadow:0px 4px 2px #616161;
+z-index:100;
+width:100%;
+grid-column:1 /span 4;
+display:flex;
 justify-content:start;
-width:auto;
-transition:width 2s;
 flex-wrap:wrap;
 `;
 
 export const Topic = styled(Control)`
-grid-column:1 /span 12;
 height:60px;
 line-height:60px;
 min-width:60px;
@@ -77,12 +79,12 @@ background-color:${(props)=>(props.active ? "#00c853" : "transparent")};
 }
 `;
 
-export const Content = styled.div`
+export const Main = styled.div`
 position:relative;
-display:grid;
 background-color:#eeeeee;
 grid-column:1 /span 4;
-grid-template-columns:10% 10% 10% 10% 5% 5% 5% 5% 10% 10% 10% 10%;
+display:grid;
+grid-template-columns:20% 20% 20% 10% 10% 20%;
 `;
 
 export const SelectTopic = styled.ul`
@@ -91,9 +93,9 @@ min-width:200px;
 border-radius:0 0 5px 5px;
 margin:0 5px;
 position:absolute;
-z-index:100;
+z-index:80;
 background-color:white;
-box-shadow:2px 12px 20px 2px #424242;
+box-shadow:2px 6px 4px #424242;
 display:${(props)=>(props.show ? "block" : "none")};
 `;
 

@@ -59,27 +59,32 @@ function countriesList(countries, inProp, selectCountry){
       <ul className="c-list">
         <div className="col">
           {countries.slice(0,10).map((c)=>{
-            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
+            const {alpha2Code:code, name, capital} = c;
+            return <li key={code} onClick={()=>selectCountry({name,code,capital})}>{name}</li>
           })}
         </div>
         <div className="col">
           {countries.slice(10,20).map((c)=>{
-            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
+            const {alpha2Code:code, name, capital} = c;
+            return <li key={code} onClick={()=>selectCountry({name,code,capital})}>{name}</li>
           })}
         </div>
         <div className="col">
           {countries.slice(20,30).map((c)=>{
-            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
+            const {alpha2Code:code, name, capital} = c;
+            return <li key={code} onClick={()=>selectCountry({name,code,capital})}>{name}</li>
           })}
         </div>
         <div className="col">
           {countries.slice(30,40).map((c)=>{
-            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
+            const {alpha2Code:code, name, capital} = c;
+            return <li key={code} onClick={()=>selectCountry({name,code,capital})}>{name}</li>
           })}
         </div>
         <div className="col">
           {countries.slice(40,50).map((c)=>{
-            return <li key={c.alpha2Code} onClick={()=>selectCountry({name:c.name,code:c.alpha2Code})}>{c.name}</li>
+            const {alpha2Code:code, name, capital} = c;
+            return <li key={code} onClick={()=>selectCountry({name,code,capital})}>{name}</li>
           })}
         </div>
       </ul>

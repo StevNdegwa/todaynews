@@ -11,13 +11,13 @@ width:100%;
 `;
 
 export const List = styled(Ul)`
-grid-column:1 /span 9;
+grid-column:1 /span 4;
 background-color:white;
 border:1px outset white;
 border-radius:5px;
 margin:0.5em;
 @media only screen and (max-width: 700px){
-  grid-column:1 /span 12;
+  grid-column:1 /span 6;
 }
 `;
 
@@ -82,10 +82,10 @@ padding:0.5em;
 `;
 
 export const PSearches = styled(Ul)`
-grid-column:10 /span 3;
+grid-column-start:5;
 padding:2em;
 @media only screen and (max-width: 700px){
-  grid-column:1 /span 12;
+  grid-column:1 /span 6;
 }
 `;
 

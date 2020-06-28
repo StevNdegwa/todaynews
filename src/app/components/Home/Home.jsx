@@ -7,7 +7,7 @@ import Footer from "../Footer";
 import NewsList from "./NewsList";
 import SiteContext from "../../SiteContext";
 
-import {Topics, Topic, SelectTopic, TopicOption, Content, Form, SearchInput, Search, HSelect} from "./styles";
+import {Topics, Topic, SelectTopic, TopicOption, Main, Form, SearchInput, Search, HSelect} from "./styles";
 
 const {countries} = require("../../data/countries.json")
 const {list} = require("../../data/topics.json");
@@ -46,13 +46,13 @@ export default function Home(){
   
   return (<>
     <Header>
-      <HSelect defaultValue={site.country} onChange={handleCountrySelection}>
-        {countries.map((c)=>(<option key={c.key} value={c.key} >{c.name}</option>))}
-      </HSelect>
       <Form method="POST" onSubmit={submitSearch}>
         <SearchInput type="search" placeholder="Search a topic ..." onChange={handleSearchInputChange} value={searchInput} required autocomplete="on"/>
         <Search><MdSearch size="1.5em"/></Search>
       </Form>
+      <HSelect defaultValue={site.country} onChange={handleCountrySelection}>
+        {countries.map((c)=>(<option key={c.key} value={c.key} >{c.name}</option>))}
+      </HSelect>
     </Header>
     <Topics>
       <Topic onClick={()=>setShowTopicsList((show)=>(show ? false : true))}>
@@ -61,11 +61,11 @@ export default function Home(){
       <Topic onClick={()=>handleTopicClick("topnews")} active={currTopic === "topnews"}>Top News</Topic>
       {topics.map((t,idx)=>{
         return (<Topic key={idx} onDoubleClick={()=>changeTopics({type:"remove", topic:t.key})} title="Double click to remove" onClick={()=>handleTopicClick(t.key)} active={currTopic === t.key}>
-          {t.label}
+        {t.label}
         </Topic>);
       })}
     </Topics>
-    <Content>
+    <Main>
       {<SelectTopic className="select_topic" show={showTopicsList}>
         {list.map((l)=>{
           return (<TopicOption key={l.key} onClick={()=>{changeTopics({type:"add", topic:l});}}>
@@ -75,7 +75,7 @@ export default function Home(){
         </SelectTopic>
       }
       <NewsList topic={currTopic} query={searchQuery}/>
-    </Content>
+    </Main>
     <Footer>
       <ul>
         <h3>More News</h3>

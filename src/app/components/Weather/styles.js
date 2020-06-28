@@ -1,5 +1,45 @@
 import styled from "styled-components";
 
+
+export const Content = styled.div`
+grid-column:1 /span 4;
+position:relative;
+background-color:#eeeeee;
+`;
+
+export const Charts = styled.div`
+padding:1em;
+display:grid;
+grid-template-columns:10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+`;
+
+export const Country = styled.div`
+display:flex;
+width:150px;
+height:60px;
+line-height:60px;
+font-size:1.5em;
+font-weight:600;
+cursor:pointer;
+background-color:#eeeeee;
+transition:background-color 200ms;
+&:hover{
+  background-color:#e0e0e0;
+}
+&>div{
+  height:100%;
+  width:50px;
+  text-align:center;
+  &.ic{
+    padding:0.25em;
+    &>svg{
+      height:1.3em;
+      width:1.3em;
+    }
+  }
+}
+`;
+
 export const Search = styled.form`
 grid-column-start:1;
 display:flex;
@@ -30,29 +70,4 @@ margin:0.5em;
   border:none;
 }
 `;
-export const Content = styled.div`
-grid-column:1 /span 4;
-position:relative;
-`;
 
-export const Country = styled.div`
-display:flex;
-width:150px;
-height:50px;
-line-height:50px;
-font-size:1.5em;
-font-weight:600;
-cursor:pointer;
-&>div{
-  height:100%;
-  width:50px;
-  text-align:center;
-  &.ic{
-    padding:0.25em;
-    &>svg{
-      height:1.3em;
-      width:1.3em;
-    }
-  }
-}
-`;
