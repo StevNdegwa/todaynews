@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Select, Loader} from "../styled-comp";
+import {Select, Loader} from "../styles";
 
 export const Main = styled.main`
 grid-column:1 /span 4;

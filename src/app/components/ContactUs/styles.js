@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Row} from "../styled-comp";
+import {Row} from "../styles";
 
 export const Content = styled(Row)`
 min-height:300px;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Loader} from "../../styled-comp";
+import {Loader} from "../../styles";
 
 export const Ul = styled.ul`
 list-style-type:none;

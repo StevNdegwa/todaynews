@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Control, Select} from "../styled-comp";
+import {Control, Select} from "../styles";
 
 export const Form = styled.form`
 grid-column-start:1;

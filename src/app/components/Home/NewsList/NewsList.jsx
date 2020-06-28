@@ -5,7 +5,7 @@ import {MdChevronRight,MdCancel} from "react-icons/md";
 import {FaFacebook, FaTwitter, FaWhatsapp, FaShareAlt} from "react-icons/fa";
 
 
-import {Control} from "../../styled-comp";
+import {Control} from "../../styles";
 import {List, Item, PSearches, Search, NewsLoader, TopicImg} from "./styles";
 
 import SiteContext from "../../../SiteContext";

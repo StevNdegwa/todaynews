@@ -1,6 +1,7 @@
 import React from "react";
 import {MdRefresh} from "react-icons/md";
-import {Wrapper, Current, WeatherIcons, Main, Header, Loader, Info} from "./styles";
+import {Wrapper, Current, WeatherIcons, Main, Header} from "./styles";
+import {Loader, Info} from "../styles";
 
 const CurrentWeather = React.memo(({weather, country, loadCurrentWeather})=>{
   const [loading, setLoading] = React.useState(false);

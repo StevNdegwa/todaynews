@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Control} from "../styled-comp";
+import {Control} from "../styles";
 
 export const Nav = styled.header`
 grid-column: 1 /span 4;

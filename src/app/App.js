@@ -9,6 +9,8 @@ import About from "./components/About";
 import ContactUs from "./components/ContactUs";
 import SiteContext from "./SiteContext";
 
+import {Info, PageLoader} from "./components/styles";
+
 import {configureStore} from "@reduxjs/toolkit";
 import {Provider} from "react-redux";
 import reducer from "./features/reducer";
@@ -28,12 +30,12 @@ function App() {
       <IconContext.Provider value={{className:"news-app-icons"}}>
         <Switch>
           <Route path="/c19tracker">
-            <React.Suspense fallback={<div>Please Wait...</div>}>
+            <React.Suspense fallback={<Info><PageLoader/></Info>}>
               <C19Tracker/>
             </React.Suspense>
           </Route>
           <Route path="/weather">
-            <React.Suspense fallback={<div>Please Wait...</div>}>
+            <React.Suspense fallback={<Info><PageLoader/></Info>}>
               <TodayWeather/>
             </React.Suspense>
           </Route>
