@@ -10,6 +10,7 @@ export default function loadCurrentWeather(locationName){
       if(body && !body.error){
         return dispatch(currentWeatherSlice.actions.setWeather(body));
       }else{
+        console.log(body)
         throw new Error("Empty dataset");
       }
     }catch(error){

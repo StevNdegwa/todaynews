@@ -18,6 +18,7 @@ const CurrentWeather = React.memo(({weather, country, loadCurrentWeather})=>{
       await loadCurrentWeather(country.capital);
       setLoading(false);
     }catch(error){
+      console.log(error)
       setLoading(false);
       setError(true);
     }
