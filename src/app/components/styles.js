@@ -81,7 +81,7 @@ justify-content:center;
 `;
 
 export const PageLoader = styled.div`
-animation:${pageLoaderAnim} 1s linear infinite;
+animation:${pageLoaderAnim} 2s linear infinite;
 border-color:#616161;
 border-style:dotted;
 border-radius:50%;

@@ -32,7 +32,7 @@ const CurrentWeather = React.memo(({weather, country, loadCurrentWeather})=>{
     {loading ? 
       <Info><Loader size="50px"/></Info> :
       error ?  
-        <Info><div onClick={()=>handleRefresh()}><MdRefresh size="3em"/><div>Try Again After <br/>1 minute</div></div></Info> :
+        <Info><div onClick={()=>handleRefresh()}><MdRefresh size="3em"/></div></Info> :
         <>
           <Header>
             <span>{weather.locationName} Weather </span>as of {weather.time}&nbsp;{weather.timezone}
