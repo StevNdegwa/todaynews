@@ -97,6 +97,20 @@ z-index:80;
 background-color:white;
 box-shadow:2px 6px 4px #424242;
 display:${(props)=>(props.show ? "block" : "none")};
+&.select-topic-enter{
+  opacity:0;
+}
+&.select-topic-enter-active{
+  opacity:1;
+  transition:opacity 200ms;
+}
+&.select-topic-exit{
+  opacity:1;
+}
+&.select-topic-exit-active{
+  opacity:0;
+  transition:opacity 200ms;
+}
 `;
 
 export const TopicOption = styled.li`

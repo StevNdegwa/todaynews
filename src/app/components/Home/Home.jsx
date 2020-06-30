@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {MdAdd, MdClear, MdSearch} from "react-icons/md";
+import {CSSTransition} from "react-transition-group";
 
 import Header from "../Header";
 import Footer from "../Footer";
@@ -20,6 +21,10 @@ export default function Home(){
   const [searchInput, setSearchInput] = React.useState("");
   
   const site = React.useContext(SiteContext);
+  
+  React.useEffect(()=>{
+    document.title = "Today-News | Your Favourite News Site";
+  },[]);
   
   document.body.addEventListener("click",(evt)=>{
     setShowTopicsList(false)
@@ -66,14 +71,15 @@ export default function Home(){
       })}
     </Topics>
     <Main>
-      {<SelectTopic className="select_topic" show={showTopicsList}>
+      <CSSTransition timeout={200} classNames="select-topic" in={showTopicsList}>
+        <SelectTopic className="select_topic" show={showTopicsList}>
         {list.map((l)=>{
           return (<TopicOption key={l.key} onClick={()=>{changeTopics({type:"add", topic:l});}}>
             {l.label}
           </TopicOption>)
         })}
         </SelectTopic>
-      }
+      </CSSTransition>
       <NewsList topic={currTopic} query={searchQuery}/>
     </Main>
     <Footer>

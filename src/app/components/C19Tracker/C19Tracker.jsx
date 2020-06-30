@@ -20,7 +20,8 @@ export default function C19Tracker(){
   const numsFormat = format(",");
   
   React.useEffect(()=>{
-    loadData()
+    document.title = "Today-News | Your Favourite News Site";
+    loadData();
   }, [])
   
   function handleCountrySelection(evt){

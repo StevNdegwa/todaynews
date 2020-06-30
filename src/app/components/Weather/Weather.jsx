@@ -10,6 +10,10 @@ import {Search, Content, Country, Charts} from "./styles";
 export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather}){
   const [showRegions, setShowRegions] = React.useState(false);
   
+  React.useEffect(()=>{
+    document.title = "Today-Weather | Your Favourite Weather Site";
+  },[]);
+  
   return (<>
     <Header>
       <Search method="POST">

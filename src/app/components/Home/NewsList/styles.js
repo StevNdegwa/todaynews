@@ -82,7 +82,7 @@ padding:0.5em;
 `;
 
 export const PSearches = styled(Ul)`
-grid-column-start:5;
+grid-column:5 /span 2;
 padding:2em;
 @media only screen and (max-width: 700px){
   grid-column:1 /span 6;
