@@ -3,19 +3,19 @@ import {MdRefresh} from "react-icons/md";
 import {Wrapper, Current, WeatherIcons, Main, Header} from "./styles";
 import {Loader, Info} from "../styles";
 
-const CurrentWeather = React.memo(({weather, country, loadCurrentWeather})=>{
-  const [loading, setLoading] = React.useState(false);
+const CurrentWeather = React.memo(({weather, locationName, loadCurrentWeather})=>{
+  const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   
   React.useEffect(()=>{
     loadData()
-  }, [country])
+  }, [locationName])
   
   async function loadData(){
     setLoading(true);
     setError(false);
     try{
-      await loadCurrentWeather(country.capital);
+      await loadCurrentWeather(locationName);
       setLoading(false);
     }catch(error){
       console.log(error)
@@ -35,7 +35,7 @@ const CurrentWeather = React.memo(({weather, country, loadCurrentWeather})=>{
         <Info><div onClick={()=>handleRefresh()}><MdRefresh size="3em"/></div></Info> :
         <>
           <Header>
-            <span>{weather.locationName} Weather </span>as of {weather.time}&nbsp;
+            <span>{weather.locationName}, {weather.country} Weather </span>as of {weather.time}&nbsp;
           </Header>
           <Main>
             <Current>

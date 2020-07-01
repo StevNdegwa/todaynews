@@ -9,15 +9,28 @@ import {Search, Content, Country, Charts} from "./styles";
 
 export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather}){
   const [showRegions, setShowRegions] = React.useState(false);
+  const [locationNameInput, setLocationNameInput] = React.useState("");
+  const [locationName, setLocationName] = React.useState(country.capital);
+  
   
   React.useEffect(()=>{
     document.title = "Today-Weather | Your Favourite Weather Site";
-  },[]);
+    setLocationName(country.capital);
+  },[country]);
+  
+  function handleLocationInputChanges(evt){
+    setLocationNameInput(evt.target.value);
+  }
+  
+  function handleSearchSubmit(evt){
+    evt.preventDefault();
+    setLocationName(locationNameInput);
+  }
   
   return (<>
     <Header>
-      <Search method="POST">
-        <input type="search" placeholder="Search a location"/>
+      <Search method="POST" onSubmit={handleSearchSubmit}>
+        <input type="search" placeholder="Search a location" onChange={handleLocationInputChanges} value={locationNameInput}/>
         <button><MdSearch size="1.5em"/></button>
       </Search>
       <Country onClick={()=>setShowRegions(s=>!s)}>
@@ -29,7 +42,7 @@ export default function Weather({selectCountry, country, currentWeather, loadCur
     <Content>
       {showRegions && <Regions selectCountry={selectCountry}/>}
       <Charts>
-        <CurrentWeather weather={currentWeather} country={country} loadCurrentWeather={loadCurrentWeather}/>
+        <CurrentWeather weather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather}/>
       </Charts>
     </Content>
   </>);
