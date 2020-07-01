@@ -39,7 +39,7 @@ const CurrentWeather = React.memo(({weather, locationName, loadCurrentWeather})=
           </Header>
           <Main>
             <Current>
-              <div id="temperature">{weather.temperature}<span>&#8451;</span></div>
+              <div id="temperature"><span>{weather.temperature}<span>&#8451;</span></span></div>
               <div id="description">{weather.description}</div>
             </Current>
             <WeatherIcons>

@@ -4,7 +4,7 @@ import styled, {keyframes} from "styled-components";
 export const Content = styled.div`
 grid-column:1 /span 4;
 position:relative;
-background-color:#eeeeee;
+background-image:linear-gradient(#bbdefb, #bbdefb,#c5cae9,#9fa8da);
 `;
 
 export const Charts = styled.div`
