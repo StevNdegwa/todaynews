@@ -86,6 +86,7 @@ margin:0.5em 0;
   color:#212121;
   &:hover{
     color:#00c853;
+    text-shadow:1px 1px 1px black;
   }
 }
 @media only screen and (max-width: 700px){
