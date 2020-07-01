@@ -7,11 +7,14 @@ export default function loadCurrentWeather(locationName){
     try{
       const body = await getCurrentWeather(locationName);
       
-      if(body && !body.error){
+      if(body && body.cod === 200){
+        
         return dispatch(currentWeatherSlice.actions.setWeather(body));
+        
       }else{
-        console.log(body)
+        
         throw new Error("Empty dataset");
+        
       }
     }catch(error){
       throw error;

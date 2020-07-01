@@ -9,6 +9,11 @@ box-shadow:1px 1px 3px #616161;
 cursor:pointer;
 border-radius:3px;
 height:250px;
+@media only screen and (max-width: 700px){
+  grid-column-start:1;
+  grid-column-end:11;
+  height:400px;
+}
 `;
 
 export const Header = styled.div`
@@ -30,17 +35,32 @@ display:flex;
   display:flex;
   flex-direction:column;
 }
+@media only screen and (max-width: 700px){
+  flex-direction:column;
+  &>div{
+    height:50%;
+    padding:0.5em;
+  }
+}
 `;
 
 export const Current = styled.div`
 width:100%;
-height:100%;
 font-weight:600;
 &>#temperature{
-  font-size:6em;
+  font-size:5em;
 }
 &>#description{
   font-size:1.5em;
+  text-transform:capitalize;
+}
+@media only screen and (max-width: 700px){
+  &>#temperature{
+    font-size:3.5em;
+  }
+  &>#description{
+    font-size:1.2em;
+  }
 }
 `;
 
@@ -48,6 +68,8 @@ export const WeatherIcons = styled.div`
 justify-content:center;
 align-items:center;
 width:200px;
-height:100%;
+@media only screen and (max-width: 700px){
+  width:100%;
+}
 `;
 

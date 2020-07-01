@@ -35,11 +35,11 @@ const CurrentWeather = React.memo(({weather, country, loadCurrentWeather})=>{
         <Info><div onClick={()=>handleRefresh()}><MdRefresh size="3em"/></div></Info> :
         <>
           <Header>
-            <span>{weather.locationName} Weather </span>as of {weather.time}&nbsp;{weather.timezone}
+            <span>{weather.locationName} Weather </span>as of {weather.time}&nbsp;
           </Header>
           <Main>
             <Current>
-              <div id="temperature">{weather.temperature}<span>&#176;</span></div>
+              <div id="temperature">{weather.temperature}<span>&#8451;</span></div>
               <div id="description">{weather.description}</div>
             </Current>
             <WeatherIcons>

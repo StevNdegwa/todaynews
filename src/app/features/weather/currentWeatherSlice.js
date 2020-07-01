@@ -9,10 +9,21 @@ const currentWeatherSlice = createSlice({
         return action.payload;
       },
       prepare(payload){
-        const {request, location, current} = payload;
-        const {name:locationName, timezone_id:timezone} = location;
-        const {temperature, weather_icons, weather_descriptions, observation_time:time} = current;
-        return {payload:{locationName, temperature, icon:weather_icons[0], description:`${weather_descriptions}`, time, timezone}};
+        const {weather, main, name:locationName, timezone} = payload;
+        const time = (new Date(payload.dt)).toLocaleTimeString();
+        const description = weather.map((w)=>{
+          return w.description;
+        })
+        
+        
+        return {payload:{
+          locationName, 
+          temperature:main.temp, 
+          icon:`http://openweathermap.org/img/wn/${weather[0].icon}@4x.png`, 
+          description:`${description}`, 
+          time, 
+          timezone
+        }};
       }
     }
   }
