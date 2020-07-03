@@ -3,6 +3,7 @@ import ProTypes from "prop-types";
 import {MdSearch, MdPublic, MdArrowDropDown, MdArrowDropUp} from "react-icons/md";
 
 import Header from "../Header";
+import Footer from "../Footer";
 import Regions from "./Regions";
 import CurrentWeather from "./CurrentWeather";
 import HourlyForecast from "./HourlyForecast";
@@ -47,6 +48,7 @@ export default function Weather({selectCountry, country, currentWeather, loadCur
         <HourlyForecast locationName={locationName} loadHourlyForecast={loadHourlyForecast} hourlyForecast={hourlyForecast}/>
       </Charts>
     </Content>
+    <Footer/>
   </>);
 }
 
