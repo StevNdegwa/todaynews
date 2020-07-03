@@ -3,18 +3,21 @@ import {connect} from "react-redux";
 import Weather from "../../components/Weather";
 import countrySlice from "../../features/weather/countrySlice";
 import loadCurrentWeather from "../../features/weather/loadCurrentWeather";
+import loadHourlyForecast from "../../features/weather/loadHourlyForecast";
 
 function mapStateToProps(state){
   return {
     country:state.country,
-    currentWeather:state.currentWeather
+    currentWeather:state.currentWeather,
+    hourlyForecast:state.hourlyForecast
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
     selectCountry:(country)=>dispatch(countrySlice.actions.setCountry(country)),
-    loadCurrentWeather:(locationName)=>dispatch(loadCurrentWeather(locationName))
+    loadCurrentWeather:(locationName)=>dispatch(loadCurrentWeather(locationName)),
+    loadHourlyForecast:(locationName)=>dispatch(loadHourlyForecast(locationName))
   }
 }
 

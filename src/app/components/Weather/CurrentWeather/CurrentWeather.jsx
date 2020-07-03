@@ -1,7 +1,7 @@
 import React from "react";
 import {MdRefresh} from "react-icons/md";
-import {Wrapper, Current, WeatherIcons, Main, Header} from "./styles";
-import {Loader, Info} from "../styles";
+import {CWrapper, Current, WeatherIcons, CMain} from "./styles";
+import {Loader, Info, Header} from "../styles";
 
 const CurrentWeather = React.memo(({currentWeather, locationName, loadCurrentWeather})=>{
   const [loading, setLoading] = React.useState(true);
@@ -28,7 +28,7 @@ const CurrentWeather = React.memo(({currentWeather, locationName, loadCurrentWea
     return loadData();
   }
   
-  return (<Wrapper>
+  return (<CWrapper>
     {loading ? 
       <Info><Loader size="50px"/></Info> :
       error ?  
@@ -37,7 +37,7 @@ const CurrentWeather = React.memo(({currentWeather, locationName, loadCurrentWea
           <Header>
             <span>{currentWeather.locationName}, {currentWeather.country} Weather </span>as of {currentWeather.time}&nbsp;
           </Header>
-          <Main>
+          <CMain>
             <Current>
               <div id="temperature"><span>{currentWeather.temperature}<span>&#8451;</span></span></div>
               <div id="description">{currentWeather.description}</div>
@@ -45,10 +45,10 @@ const CurrentWeather = React.memo(({currentWeather, locationName, loadCurrentWea
             <WeatherIcons>
               <img src={currentWeather.icon} alt="Weather Icons"/>
             </WeatherIcons>
-          </Main>
+          </CMain>
         </>
     }
-  </Wrapper>);
+  </CWrapper>);
 })
 
 export default CurrentWeather;

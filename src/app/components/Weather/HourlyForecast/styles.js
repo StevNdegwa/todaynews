@@ -1,29 +1,55 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-grid-column-start:2;
-grid-column-end:10;
-background-color:white;
-border:1px outset white;
-box-shadow:1px 1px 3px #616161;
-cursor:pointer;
-border-radius:3px;
-min-height:250px;
-margin-top:1em;
+import {Wrapper, Main} from "../styles";
+
+export const HWrapper = styled(Wrapper)`
+height:250px;
 @media only screen and (max-width: 700px){
-  grid-column-start:1;
-  grid-column-end:11;
-  height:400px;
+  height:500px;
 }
 `;
 
-export const Header = styled.div`
+export const HMain = styled(Main)`
+justify-content:center;
+@media only screen and (max-width: 700px){
+  height:500px;
+}
+`;
+
+export const Forecast = styled.div`
+height:100%;
+min-width:200px;
 width:100%;
-height:40px;
-line-height:40px;
-padding-left:1em;
-&>span{
-  font-size:1.5em;
+background-image:linear-gradient(white, #bdbdbd, #bdbdbd, white);
+&>div{
+  text-align:center;
   font-weight:600;
+  background-color:white;
+  width:calc(100% - 2px);
+}
+&>div#time{
+  padding-top:10px;
+  height:40px;
+  line-height:30px;
+  font-size:1.2em;
+}
+&>div#temperature{
+  height:50px;
+  line-height:50px;
+  font-size:1.5em;
+}
+&>div#description{
+  padding-bottom:10px;
+  height:40px;
+  line-height:30px;
+  font-size:1.2em;
+  text-transform:capitalize;
+}
+&>div#icon{
+  height: 100%;
+  background-image: ${(props)=>(`url(${props.icon})`)};
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:50%;
 }
 `;

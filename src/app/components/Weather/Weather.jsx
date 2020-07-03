@@ -8,7 +8,7 @@ import CurrentWeather from "./CurrentWeather";
 import HourlyForecast from "./HourlyForecast";
 import {Search, Content, Country, Charts} from "./styles";
 
-export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather}){
+export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather, loadHourlyForecast, hourlyForecast}){
   const [showRegions, setShowRegions] = React.useState(false);
   const [locationNameInput, setLocationNameInput] = React.useState("");
   const [locationName, setLocationName] = React.useState(country.capital);
@@ -44,15 +44,17 @@ export default function Weather({selectCountry, country, currentWeather, loadCur
       {showRegions && <Regions selectCountry={selectCountry}/>}
       <Charts>
         <CurrentWeather currentWeather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather}/>
-        <HourlyForecast/>
+        <HourlyForecast locationName={locationName} loadHourlyForecast={loadHourlyForecast} hourlyForecast={hourlyForecast}/>
       </Charts>
     </Content>
   </>);
 }
 
 Weather.propTypes = {
-  country:ProTypes.object.isRequired,
-  selectCountry:ProTypes.func.isRequired,
-  loadCurrentWeather:ProTypes.func.isRequired,
-  currentWeather:ProTypes.object.isRequired
+  country: ProTypes.object.isRequired,
+  selectCountry: ProTypes.func.isRequired,
+  loadCurrentWeather: ProTypes.func.isRequired,
+  currentWeather: ProTypes.object.isRequired,
+  hourlyForecast: ProTypes.array.isRequired,
+  loadHourlyForecast: ProTypes.func.isRequired
 }

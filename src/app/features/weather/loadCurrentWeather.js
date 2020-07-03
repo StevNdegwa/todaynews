@@ -4,20 +4,16 @@ import currentWeatherSlice from "./currentWeatherSlice";
 export default function loadCurrentWeather(locationName){
   
   return async function(dispatch){
-    try{
-      const body = await getCurrentWeather(locationName);
+    const body = await getCurrentWeather(locationName);
       
-      if(body && body.cod === 200){
+    if(body && body.cod === 200){
         
-        return dispatch(currentWeatherSlice.actions.setWeather(body));
+      return dispatch(currentWeatherSlice.actions.setWeather(body));
         
-      }else{
+    }else{
         
-        throw new Error("Empty dataset");
+      throw new Error("Empty dataset");
         
-      }
-    }catch(error){
-      throw error;
     }
   }
 }

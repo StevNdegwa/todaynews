@@ -2,10 +2,12 @@ import {combineReducers} from "redux";
 
 import countrySlice from "./weather/countrySlice";
 import currentWeatherSlice from "./weather/currentWeatherSlice";
+import hourlyForecastSlice from "./weather/hourlyForecastSlice";
 
 const reducer = combineReducers({
-  country:countrySlice.reducer,
-  currentWeather:currentWeatherSlice.reducer
+  country: countrySlice.reducer,
+  currentWeather: currentWeatherSlice.reducer,
+  hourlyForecast: hourlyForecastSlice.reducer
 });
 
 export default reducer;

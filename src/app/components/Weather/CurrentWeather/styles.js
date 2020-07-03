@@ -1,40 +1,17 @@
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 
-export const Wrapper = styled.div`
-grid-column-start:2;
-grid-column-end:10;
+import {Wrapper, Main} from "../styles";
+
+export const CWrapper = styled(Wrapper)`
 background-color:rgba(255, 255, 255, 0.2);
 border:1px outset rgba(255, 255, 255, 0.2);
-box-shadow:1px 1px 3px #616161;
-cursor:pointer;
-border-radius:3px;
 height:250px;
 @media only screen and (max-width: 700px){
-  grid-column-start:1;
-  grid-column-end:11;
   height:400px;
 }
 `;
 
-export const Header = styled.div`
-width:100%;
-height:40px;
-line-height:40px;
-padding-left:1em;
-&>span{
-  font-size:1.5em;
-  font-weight:600;
-}
-`;
-
-export const Main = styled.div`
-height:calc(100%-40px);
-display:flex;
-&>div{
-  padding:1em;
-  display:flex;
-  flex-direction:column;
-}
+export const CMain = styled(Main)`
 @media only screen and (max-width: 700px){
   flex-direction:column;
   &>div{
@@ -44,6 +21,7 @@ display:flex;
 `;
 
 export const Current = styled.div`
+padding:1em;
 width:100%;
 font-weight:600;
 height:100%;
@@ -68,6 +46,7 @@ height:100%;
 `;
 
 export const WeatherIcons = styled.div`
+padding:1em;
 justify-content:center;
 align-items:center;
 width:200px;
@@ -77,4 +56,3 @@ height:100%;
   height:40%;
 }
 `;
-
