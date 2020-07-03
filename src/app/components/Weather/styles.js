@@ -99,7 +99,7 @@ justify-content:center;
 `;
 
 export const Loader = styled.div`
-animation:${loaderAnim} 1s linear infinite;
+animation:${loaderAnim} 2s linear infinite;
 border-color:#616161;
 border-style:dotted;
 border-radius:50%;

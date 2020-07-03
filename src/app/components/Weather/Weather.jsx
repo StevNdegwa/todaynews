@@ -5,6 +5,7 @@ import {MdSearch, MdPublic, MdArrowDropDown, MdArrowDropUp} from "react-icons/md
 import Header from "../Header";
 import Regions from "./Regions";
 import CurrentWeather from "./CurrentWeather";
+import HourlyForecast from "./HourlyForecast";
 import {Search, Content, Country, Charts} from "./styles";
 
 export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather}){
@@ -42,7 +43,8 @@ export default function Weather({selectCountry, country, currentWeather, loadCur
     <Content>
       {showRegions && <Regions selectCountry={selectCountry}/>}
       <Charts>
-        <CurrentWeather weather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather}/>
+        <CurrentWeather currentWeather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather}/>
+        <HourlyForecast/>
       </Charts>
     </Content>
   </>);

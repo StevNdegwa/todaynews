@@ -3,7 +3,7 @@ import {MdRefresh} from "react-icons/md";
 import {Wrapper, Current, WeatherIcons, Main, Header} from "./styles";
 import {Loader, Info} from "../styles";
 
-const CurrentWeather = React.memo(({weather, locationName, loadCurrentWeather})=>{
+const CurrentWeather = React.memo(({currentWeather, locationName, loadCurrentWeather})=>{
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   
@@ -35,15 +35,15 @@ const CurrentWeather = React.memo(({weather, locationName, loadCurrentWeather})=
         <Info><div onClick={()=>handleRefresh()}><MdRefresh size="3em"/></div></Info> :
         <>
           <Header>
-            <span>{weather.locationName}, {weather.country} Weather </span>as of {weather.time}&nbsp;
+            <span>{currentWeather.locationName}, {currentWeather.country} Weather </span>as of {currentWeather.time}&nbsp;
           </Header>
           <Main>
             <Current>
-              <div id="temperature"><span>{weather.temperature}<span>&#8451;</span></span></div>
-              <div id="description">{weather.description}</div>
+              <div id="temperature"><span>{currentWeather.temperature}<span>&#8451;</span></span></div>
+              <div id="description">{currentWeather.description}</div>
             </Current>
             <WeatherIcons>
-              <img src={weather.icon} alt="Weather Icons"/>
+              <img src={currentWeather.icon} alt="Weather Icons"/>
             </WeatherIcons>
           </Main>
         </>
