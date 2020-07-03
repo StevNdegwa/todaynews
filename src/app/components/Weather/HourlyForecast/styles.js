@@ -4,16 +4,10 @@ import {Wrapper, Main} from "../styles";
 
 export const HWrapper = styled(Wrapper)`
 height:250px;
-@media only screen and (max-width: 700px){
-  height:500px;
-}
 `;
 
 export const HMain = styled(Main)`
 justify-content:center;
-@media only screen and (max-width: 700px){
-  height:500px;
-}
 `;
 
 export const Forecast = styled.div`

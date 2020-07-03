@@ -91,6 +91,7 @@ const loaderAnim = keyframes`
 `;
 
 export const Info = styled.div`
+color:#424242;
 width:100%;
 height:100%;
 display:flex;
@@ -120,7 +121,6 @@ margin-bottom:1em;
 @media only screen and (max-width: 700px){
   grid-column-start:1;
   grid-column-end:11;
-  height:400px;
 }
 `;
 

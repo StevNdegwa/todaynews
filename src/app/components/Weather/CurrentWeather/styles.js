@@ -6,6 +6,7 @@ export const CWrapper = styled(Wrapper)`
 background-color:rgba(255, 255, 255, 0.2);
 border:1px outset rgba(255, 255, 255, 0.2);
 height:250px;
+color:white;
 @media only screen and (max-width: 700px){
   height:400px;
 }

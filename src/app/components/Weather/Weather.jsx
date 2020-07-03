@@ -7,6 +7,7 @@ import Footer from "../Footer";
 import Regions from "./Regions";
 import CurrentWeather from "./CurrentWeather";
 import HourlyForecast from "./HourlyForecast";
+import CurrentWeatherMore from "./CurrentWeatherMore";
 import {Search, Content, Country, Charts} from "./styles";
 
 export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather, loadHourlyForecast, hourlyForecast}){
@@ -46,6 +47,7 @@ export default function Weather({selectCountry, country, currentWeather, loadCur
       <Charts>
         <CurrentWeather currentWeather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather}/>
         <HourlyForecast locationName={locationName} loadHourlyForecast={loadHourlyForecast} hourlyForecast={hourlyForecast}/>
+        <CurrentWeatherMore  currentWeather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather}/>
       </Charts>
     </Content>
     <Footer/>
@@ -58,5 +60,6 @@ Weather.propTypes = {
   loadCurrentWeather: ProTypes.func.isRequired,
   currentWeather: ProTypes.object.isRequired,
   hourlyForecast: ProTypes.array.isRequired,
-  loadHourlyForecast: ProTypes.func.isRequired
+  loadHourlyForecast: ProTypes.func.isRequired,
+  loadingWeather: ProTypes.bool.isRequired
 }

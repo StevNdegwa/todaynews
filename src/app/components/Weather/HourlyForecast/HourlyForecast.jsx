@@ -42,7 +42,7 @@ const HourlyForecast = React.memo(({hourlyForecast, loadHourlyForecast, location
         <Info><div onClick={()=>handleRefresh()}><MdRefresh size="3em"/></div></Info> :
         <>
           <Header>
-            <span>Hourly forecast: Today</span>
+            <span>Hourly Forecast</span>
           </Header>
           <HMain>
             {getTodaysData().map((d, idx)=>{
