@@ -4,6 +4,9 @@ import {Wrapper, Main} from "../styles";
 
 export const CWrapper = styled(Wrapper)`
 height:300px;
+@media only screen and (max-width: 700px){
+  height:350px;
+}
 `;
 
 export const CMain = styled(Main)`
@@ -55,6 +58,12 @@ flex-direction:column;
     & svg{
       width:40px;
       height:40px;
+    }
+  }
+  @media only screen and (max-width: 700px){
+    flex-direction: column;
+    &>div{
+      width:100%;
     }
   }
 }

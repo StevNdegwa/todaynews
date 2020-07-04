@@ -101,12 +101,16 @@ height:100%;
 display:flex;
 align-items:center;
 justify-content:center;
-&>div{
+&>div:hover{
   position:relative;
+  & div.info{
+    display:inline-block;
+  }
 }
 & div.info{
   position:absolute;
-  display:inline-block;
+  top:2em;
+  display:none;
   background-color:#212121;
   color:white;
   width:200px;
@@ -115,6 +119,20 @@ justify-content:center;
   font-size:0.8em;
   line-height:20px;
   padding:0.3em;
+}
+& .info-popup-enter{
+  opacity:0;
+}
+& .info-popup-enter-active{
+  opacity:1;
+  transition: opacity 1s linear;
+}
+& .info-popup-exit{
+  opacity:1;
+}
+& .info-popup-exit-active{
+  opacity:0;
+  transition: opacity 1s linear;
 }
 `;
 

@@ -1,5 +1,6 @@
 import React from "react";
-import {MdInfoOutline, MdVisibility, MdVerticalAlignCenter} from "react-icons/md";
+import {CSSTransition} from "react-transition-group";
+import {MdHelpOutline, MdVisibility, MdVerticalAlignCenter} from "react-icons/md";
 import {WiHumidity, WiStrongWind} from "react-icons/wi";
 
 import InfoPopup from "../InfoPopup.jsx";
@@ -7,17 +8,21 @@ import {CWrapper, CMain} from "./styles";
 import {Loader, Info, Header} from "../styles";
 
 const CurrentWeatherMore = ({currentWeather, locationName, error, loading})=>{
+  const [infoPopup, setInfoPopup] = React.useState(false);
+  
   try{
     return (<CWrapper>
     {loading ? 
       <Info><Loader size="50px"/></Info> :
       error ?  
         <Info>
-          <div>
-            <MdInfoOutline size="3em"/>
-            <InfoPopup>
-              No results to display. Please check your internet connection. Then refresh on the above section.
-            </InfoPopup>
+          <div onMouseEnter={()=>setInfoPopup(true)} onMouseLeave={()=>setInfoPopup(false)}>
+            <MdHelpOutline size="3em"/>
+            <CSSTransition timeout={200} in={infoPopup} classNames="info-popup">
+              <InfoPopup>
+                No results to display. Please check your internet connection. Then click refresh on the above section.
+              </InfoPopup>
+            </CSSTransition>
           </div>
         </Info> :
         <>
@@ -58,7 +63,16 @@ const CurrentWeatherMore = ({currentWeather, locationName, error, loading})=>{
   }catch(error){
     
     return (<CWrapper>
-      <Info><div><MdInfoOutline size="3em"/></div></Info>
+      <Info>
+        <div onMouseEnter={()=>setInfoPopup(true)} onMouseLeave={()=>setInfoPopup(false)}>
+          <MdHelpOutline size="3em"/>
+          <CSSTransition timeout={200} in={infoPopup} classNames="info-popup">
+            <InfoPopup>
+              An error occured
+            </InfoPopup>
+          </CSSTransition>
+        </div>
+      </Info>
     </CWrapper>);
   }
 }

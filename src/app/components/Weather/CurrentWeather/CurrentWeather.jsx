@@ -1,9 +1,13 @@
 import React from "react";
+import {CSSTransition} from "react-transition-group";
 import {MdRefresh} from "react-icons/md";
+
+import InfoPopup from "../InfoPopup.jsx";
 import {CWrapper, Current, WeatherIcons, CMain} from "./styles";
 import {Loader, Info, Header} from "../styles";
 
 const CurrentWeather = ({currentWeather, locationName, loadCurrentWeather, loading, error, setError, setLoading})=>{
+  const [infoPopup, setInfoPopup] = React.useState(false);
   
   React.useEffect(()=>{
     loadData()
@@ -30,7 +34,16 @@ const CurrentWeather = ({currentWeather, locationName, loadCurrentWeather, loadi
     {loading ? 
       <Info><Loader size="50px"/></Info> :
       error ?  
-        <Info><div onClick={()=>handleRefresh()}><MdRefresh size="3em"/></div></Info> :
+        <Info>
+          <div onClick={()=>handleRefresh()}  onMouseEnter={()=>setInfoPopup(true)} onMouseLeave={()=>setInfoPopup(false)}>
+            <MdRefresh size="3em"/>
+            <CSSTransition timeout={200} in={infoPopup} classNames="info-popup">
+              <InfoPopup>
+                No data available for the selected location.
+              </InfoPopup>
+            </CSSTransition>
+          </div>
+        </Info> :
         <>
           <Header>
             <span>{currentWeather.locationName}, {currentWeather.country} Weather </span>as of {currentWeather.time}&nbsp;
