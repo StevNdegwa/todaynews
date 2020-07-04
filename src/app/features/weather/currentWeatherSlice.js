@@ -2,11 +2,11 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const currentWeatherSlice = createSlice({
   name:"currentWeather",
-  initialState:{},
+  initialState:{more:{}},
   reducers:{
     setWeather:{
       reducer(state, action){
-        return action.payload;
+        return Object.assign({more:{}}, action.payload);
       },
       prepare(payload){
         const {weather, main, name:locationName, timezone, sys, wind, visibility} = payload;

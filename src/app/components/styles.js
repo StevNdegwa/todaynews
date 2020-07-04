@@ -56,18 +56,22 @@ const pageLoaderAnim = keyframes`
 25%{
   border-width:5px;
   border-bottom-width:8px;
+  border-bottom-color:#039be5;
 }
 50%{
   border-size:5px;
   border-left-width:8px;
+  border-left-color:#039be5;
 }
 75%{
   border-size:5px;
   border-top-width:8px;
+  border-top-color:#039be5;
 }
 100%{
   border-size:5px;
   border-right-width:8px;
+  border-right-color:#039be5;
 }
 `;
 
@@ -82,8 +86,8 @@ justify-content:center;
 
 export const PageLoader = styled.div`
 animation:${pageLoaderAnim} 3s linear infinite;
-border-color:#616161;
-border-style:dotted;
+border-color:#e1f5fe;
+border-style:solid;
 border-radius:50%;
 width:100px;
 height:100px;

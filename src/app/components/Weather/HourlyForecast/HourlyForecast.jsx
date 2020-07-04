@@ -4,7 +4,7 @@ import {HWrapper, Forecast, HMain} from "./styles";
 import {Loader, Info, Header} from "../styles";
 
 
-const HourlyForecast = React.memo(({hourlyForecast, loadHourlyForecast, locationName})=>{
+const HourlyForecast = ({hourlyForecast, loadHourlyForecast, locationName})=>{
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   
@@ -59,6 +59,6 @@ const HourlyForecast = React.memo(({hourlyForecast, loadHourlyForecast, location
         </>
     }
   </HWrapper>);
-});
+};
 
 export default HourlyForecast;

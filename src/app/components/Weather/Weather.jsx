@@ -10,7 +10,7 @@ import HourlyForecast from "./HourlyForecast";
 import CurrentWeatherMore from "./CurrentWeatherMore";
 import {Search, Content, Country, Charts} from "./styles";
 
-export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather, loadHourlyForecast, hourlyForecast}){
+export default function Weather({selectCountry, country, currentWeather, loadCurrentWeather, loadHourlyForecast, hourlyForecast, loadingWeather, errorWeather, setErrorCurrentWeather, setLoadingCurrentWeather}){
   const [showRegions, setShowRegions] = React.useState(false);
   const [locationNameInput, setLocationNameInput] = React.useState("");
   const [locationName, setLocationName] = React.useState(country.capital);
@@ -45,9 +45,9 @@ export default function Weather({selectCountry, country, currentWeather, loadCur
     <Content>
       {showRegions && <Regions selectCountry={selectCountry}/>}
       <Charts>
-        <CurrentWeather currentWeather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather}/>
+        <CurrentWeather currentWeather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather} loading={loadingWeather} error={errorWeather} setError={setErrorCurrentWeather} setLoading={setLoadingCurrentWeather}/>
+        <CurrentWeatherMore  currentWeather={currentWeather} locationName={locationName} loading={loadingWeather} error={errorWeather}/>
         <HourlyForecast locationName={locationName} loadHourlyForecast={loadHourlyForecast} hourlyForecast={hourlyForecast}/>
-        <CurrentWeatherMore  currentWeather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather}/>
       </Charts>
     </Content>
     <Footer/>
@@ -61,5 +61,8 @@ Weather.propTypes = {
   currentWeather: ProTypes.object.isRequired,
   hourlyForecast: ProTypes.array.isRequired,
   loadHourlyForecast: ProTypes.func.isRequired,
-  loadingWeather: ProTypes.bool.isRequired
+  loadingWeather: ProTypes.bool.isRequired,
+  errorWeather: ProTypes.bool.isRequired,
+  setErrorCurrentWeather: ProTypes.func.isRequired,
+  setLoadingCurrentWeather: ProTypes.func.isRequired
 }

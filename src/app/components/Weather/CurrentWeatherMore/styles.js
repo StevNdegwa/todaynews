@@ -3,37 +3,52 @@ import styled from "styled-components";
 import {Wrapper, Main} from "../styles";
 
 export const CWrapper = styled(Wrapper)`
-height:400px;
+height:300px;
 `;
 
 export const CMain = styled(Main)`
 flex-direction:column;
 &>.top{
-  height: 200px;
+  height: 150px;
   width: 100%;
   justify-content: space-between;
   flex-direction:row;
+  padding:0 1em;
   &>div{
-    width:200px;
+    width:150px;
     height:100%;
-    border: 1px solid black;
   }
-  border: 1px solid black;
+  &>div.temperature{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    padding:1em 0;
+    &>div:first-child{
+      font-size:3em;
+      font-weight:600;
+    }
+    &>div:last-child{
+      height:40px;
+      line-height:40px;
+      font-size:1.2em;
+    }
+  }
 }
 &>.bottom{
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
-  border: 1px solid black;
   &>div{
     width:50%;
     height:40px;
     line-height:40px;
     font-size:1.3em;
-    border: 1px solid black;
     display:flex;
     justify-content: space-between;
-    padding-right: 20px;
+    padding: 0 1em;
+    border-top:1px solid #e0e0e0;
+    border-bottom:1px solid #e0e0e0;
     &>div{
       display:flex;
     }

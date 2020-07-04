@@ -75,18 +75,22 @@ const loaderAnim = keyframes`
 25%{
   border-width:5px;
   border-bottom-width:8px;
+  border-bottom-color:#039be5;
 }
 50%{
   border-size:5px;
   border-left-width:8px;
+  border-left-color:#039be5;
 }
 75%{
   border-size:5px;
   border-top-width:8px;
+  border-top-color:#039be5;
 }
 100%{
   border-size:5px;
   border-right-width:8px;
+  border-right-color:#039be5;
 }
 `;
 
@@ -97,12 +101,27 @@ height:100%;
 display:flex;
 align-items:center;
 justify-content:center;
+&>div{
+  position:relative;
+}
+& div.info{
+  position:absolute;
+  display:inline-block;
+  background-color:#212121;
+  color:white;
+  width:200px;
+  min-height:30px;
+  border-radius:3px;
+  font-size:0.8em;
+  line-height:20px;
+  padding:0.3em;
+}
 `;
 
 export const Loader = styled.div`
 animation:${loaderAnim} 2s linear infinite;
-border-color:#616161;
-border-style:dotted;
+border-color:#e1f5fe;
+border-style:solid;
 border-radius:50%;
 width:${(props)=>(!!props.size ? props.size : "30px")};
 height:${(props)=>(!!props.size ? props.size : "30px")};

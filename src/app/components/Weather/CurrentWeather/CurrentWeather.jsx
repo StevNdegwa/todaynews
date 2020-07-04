@@ -3,9 +3,7 @@ import {MdRefresh} from "react-icons/md";
 import {CWrapper, Current, WeatherIcons, CMain} from "./styles";
 import {Loader, Info, Header} from "../styles";
 
-const CurrentWeather = React.memo(({currentWeather, locationName, loadCurrentWeather})=>{
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(false);
+const CurrentWeather = ({currentWeather, locationName, loadCurrentWeather, loading, error, setError, setLoading})=>{
   
   React.useEffect(()=>{
     loadData()
@@ -49,6 +47,6 @@ const CurrentWeather = React.memo(({currentWeather, locationName, loadCurrentWea
         </>
     }
   </CWrapper>);
-})
+}
 
 export default CurrentWeather;
