@@ -33,8 +33,8 @@ const HourlyForecast = ({hourlyForecast, loadHourlyForecast, locationName})=>{
   }  
   
   function getTodaysData(){
-    return hourlyForecast.filter((h)=>{
-      return ((new Date()).getDate() === h.date);
+    return hourlyForecast.filter((h, idx)=>{
+      return ((new Date()).getDate() === h.date) && (idx < 4);
     })
   }
   
