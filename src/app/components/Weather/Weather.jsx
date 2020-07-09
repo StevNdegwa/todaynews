@@ -44,7 +44,7 @@ export default function Weather({selectCountry, country, currentWeather, loadCur
     </Header>
     <Content>
       {showRegions && <Regions selectCountry={selectCountry}/>}
-      <Charts>
+      <Charts onClick={()=>setShowRegions(false)}>
         <CurrentWeather currentWeather={currentWeather} locationName={locationName} loadCurrentWeather={loadCurrentWeather} loading={loadingWeather} error={errorWeather} setError={setErrorCurrentWeather} setLoading={setLoadingCurrentWeather}/>
         <CurrentWeatherMore  currentWeather={currentWeather} locationName={locationName} loading={loadingWeather} error={errorWeather}/>
         <HourlyForecast locationName={locationName} loadHourlyForecast={loadHourlyForecast} hourlyForecast={hourlyForecast}/>

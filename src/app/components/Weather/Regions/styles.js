@@ -17,7 +17,8 @@ line-height:50px;
   list-style-type:none;
   padding-bottom:1em;
   display:${(props)=>(props.show ? "flex" : "none")};
-  overflow:hidden;
+  overflow:auto;
+  flex-wrap:wrap;
   &.c-list-enter{
     opacity:0;
     height:0;

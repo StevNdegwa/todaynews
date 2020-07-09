@@ -55,21 +55,25 @@ scrollbar-width:auto;
 const pageLoaderAnim = keyframes`
 25%{
   border-width:5px;
+  border-color:#e1f5fe;
   border-bottom-width:8px;
   border-bottom-color:#039be5;
 }
 50%{
   border-size:5px;
+  border-color:#e1f5fe;
   border-left-width:8px;
   border-left-color:#039be5;
 }
 75%{
   border-size:5px;
+  border-color:#e1f5fe;
   border-top-width:8px;
   border-top-color:#039be5;
 }
 100%{
   border-size:5px;
+  border-color:#e1f5fe;
   border-right-width:8px;
   border-right-color:#039be5;
 }
