@@ -4,7 +4,7 @@ import {IconContext} from "react-icons";
 
 import "./index.scss";
 
-import Home from "./components/Home";
+import HomeView from "./containers/HomeView";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs";
 import SiteContext from "./SiteContext";
@@ -41,7 +41,9 @@ function App() {
           </Route>
           <Route path="/about" component={About}/>
           <Route path="/contact-us" component={ContactUs}/>
-          <Route path="/" exact component={Home}/>
+          <Route path="/" exact>
+            <HomeView/>
+          </Route>
         </Switch>
       </IconContext.Provider>
       </SiteContext.Provider>

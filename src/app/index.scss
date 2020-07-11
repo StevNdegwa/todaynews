@@ -22,6 +22,7 @@ body{
   font-family:"Segoe UI","Century Gothic";
   font-size:16px;
   color:#424242;
+  position:relative;
 }
 div#root{
   display: grid;
@@ -47,4 +48,18 @@ div#root{
 .select_topic{
   display:none;
   transition:display 2s;
+}
+.fade-in-enter{
+  opacity:0;
+}
+.fade-in-enter-active{
+  opacity:1;
+  transition:opacity 200ms;
+}
+.fade-in-exit{
+  opacity:1;
+}
+.fade-in-exit-active{
+  opacity:0;
+  transition:opacity 200ms;
 }

@@ -72,7 +72,6 @@ cursor:pointer;
 background-color:${(props)=>(props.active ? "#00c853" : "transparent")};
 &:hover{
   background-color:#00c853;
-  border:1px outset #00c853;
 }
 @media only screen and (max-width: 700px){
   font-size:0.8em;

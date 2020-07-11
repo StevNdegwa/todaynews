@@ -1,34 +1,29 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {MdAdd, MdClear, MdSearch} from "react-icons/md";
-import {CSSTransition} from "react-transition-group";
+import {MdModeEdit, MdSearch} from "react-icons/md";
 
 import Header from "../Header";
 import Footer from "../Footer";
 import NewsList from "./NewsList";
 import SiteContext from "../../SiteContext";
+import DialogContainer from "../DialogContainer";
+import EditTopicsDialog from "./EditTopicsDialog";
 
-import {Topics, Topic, SelectTopic, TopicOption, Main, Form, SearchInput, Search, HSelect} from "./styles";
-
+import {Topics, Topic, Main, Form, SearchInput, Search, HSelect} from "./styles";
 const {countries} = require("../../data/countries.json")
-const {list} = require("../../data/topics.json");
 
-export default function Home(){
-  const [topics, changeTopics] = React.useReducer(topicsReducer, [])
-  const [showTopicsList, setShowTopicsList] = React.useState(false);
+export default function Home({newsTopics, setTopics, removeTopic}){
   const [currTopic, setCurrTopic] = React.useState("topnews");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
+  const [favTopics, setFavTopics] = React.useState({dialog:false});
   
   const site = React.useContext(SiteContext);
   
   React.useEffect(()=>{
     document.title = "Today-News | Your Favourite News Site";
   },[]);
-  
-  document.body.addEventListener("click",(evt)=>{
-    setShowTopicsList(false)
-  }, true)
   
   function handleTopicClick(key){
     setCurrTopic(key);
@@ -60,26 +55,20 @@ export default function Home(){
       </HSelect>
     </Header>
     <Topics>
-      <Topic onClick={()=>setShowTopicsList((show)=>(show ? false : true))}>
-        {showTopicsList ? <MdClear size="1.5em"/> : <MdAdd size="1.5em"/>}
+      <Topic onClick={()=>setFavTopics({dialog:true})}>
+        <MdModeEdit size="1em"/>
       </Topic>
       <Topic onClick={()=>handleTopicClick("topnews")} active={currTopic === "topnews"}>Top News</Topic>
-      {topics.map((t,idx)=>{
-        return (<Topic key={idx} onDoubleClick={()=>changeTopics({type:"remove", topic:t.key})} title="Double click to remove" onClick={()=>handleTopicClick(t.key)} active={currTopic === t.key}>
+      {newsTopics.map((t, idx)=>{
+        return (<Topic key={idx} onDoubleClick={()=>removeTopic(t)} title="Double click to remove" onClick={()=>handleTopicClick(t.key)} active={currTopic === t.key}>
         {t.label}
         </Topic>);
       })}
     </Topics>
+    <DialogContainer show={favTopics.dialog} close={()=>setFavTopics({dialog:false})}>
+      {favTopics.dialog && <EditTopicsDialog show={favTopics.dialog} close={()=>setFavTopics({dialog:false})} setTopics={setTopics} topics={newsTopics}/>}
+    </DialogContainer>
     <Main>
-      <CSSTransition timeout={200} classNames="select-topic" in={showTopicsList}>
-        <SelectTopic className="select_topic" show={showTopicsList}>
-        {list.map((l)=>{
-          return (<TopicOption key={l.key} onClick={()=>{changeTopics({type:"add", topic:l});}}>
-            {l.label}
-          </TopicOption>)
-        })}
-        </SelectTopic>
-      </CSSTransition>
       <NewsList topic={currTopic} query={searchQuery}/>
     </Main>
     <Footer>
@@ -99,17 +88,8 @@ export default function Home(){
   </>);
 }
 
-function topicsReducer(state, action){
-  switch(action.type){
-    case "add":
-      if(!state.includes(action.topic)){
-        return [...state, action.topic];
-      }else{
-        return state;
-      }
-    case "remove":
-      return state.filter((t)=>(t.key !== action.topic));
-    default:
-      return state;
-  }
+Home.propTypes = {
+newsTopics:PropTypes.array.isRequired,
+setTopics:PropTypes.func.isRequired,
+removeTopic:PropTypes.func.isRequired  
 }

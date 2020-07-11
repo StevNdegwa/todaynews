@@ -5,6 +5,7 @@ import currentWeatherSlice from "./weather/currentWeatherSlice";
 import hourlyForecastSlice from "./weather/hourlyForecastSlice";
 import loadingWeatherSlice from "./weather/loadingWeatherSlice";
 import errorWeatherSlice from "./weather/errorWeatherSlice";
+import topicsSlice from "./home/topicsSlice";
 
 const reducer = combineReducers({
   country: countrySlice.reducer,
@@ -12,6 +13,7 @@ const reducer = combineReducers({
   hourlyForecast: hourlyForecastSlice.reducer,
   loadingWeather: loadingWeatherSlice.reducer,
   errorWeather: errorWeatherSlice.reducer,
+  newsTopics: topicsSlice.reducer
 });
 
 export default reducer;
