@@ -7,7 +7,8 @@ export default function DialogContainer({children, show, close}){
   
   return createPortal(<CSSTransition in={show} timeout={200} classNames="fade-in">
     <Wrapper show={show}>
-    {children}
+      {children}
+      <section className="free-space" onClick={close}></section>
     </Wrapper>
   </CSSTransition>, document.getElementById("root"));
 }

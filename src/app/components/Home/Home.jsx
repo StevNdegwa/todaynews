@@ -11,7 +11,7 @@ import DialogContainer from "../DialogContainer";
 import EditTopicsDialog from "./EditTopicsDialog";
 
 import {Topics, Topic, Main, Form, SearchInput, Search, HSelect} from "./styles";
-const {countries} = require("../../data/countries.json")
+const {countries} = require("../../data/countries.json");
 
 export default function Home({newsTopics, setTopics, removeTopic}){
   const [currTopic, setCurrTopic] = React.useState("topnews");

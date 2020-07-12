@@ -75,12 +75,6 @@ font-size:1.3em;
   background-color:#424242;
   border:none;
 }
-&.checked{
-  &>svg{
-    background-color:#424242;
-    color:white;
-  }
-}
 `;
 
 export const Actions = styled.div`

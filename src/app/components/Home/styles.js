@@ -69,7 +69,7 @@ font-weight:bold;
 color:white;
 text-align:center;
 cursor:pointer;
-background-color:${(props)=>(props.active ? "#00c853" : "transparent")};
+background-image:${(props)=>(props.active ? "linear-gradient(#00c853,#00e676,#00c853)" : "none")};
 &:hover{
   background-color:#00c853;
 }
