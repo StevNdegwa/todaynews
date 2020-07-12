@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {MdModeEdit, MdSearch} from "react-icons/md";
+import {useFiler} from "crooks";
 
 import Header from "../Header";
 import Footer from "../Footer";
@@ -18,11 +19,16 @@ export default function Home({newsTopics, setTopics, removeTopic}){
   const [searchQuery, setSearchQuery] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
   const [favTopics, setFavTopics] = React.useState({dialog:false});
+  const [fTopics, {add: addFavTopics, remove: removeFavTopics, update: updateFavTopics, clear: clearFavTopics}] = useFiler("fav-topics");
+  const [rSearches, {add: addRecentSearchs, remove: removeRecentSearches, update: updateRecentSearches, clear: clearRecentSearches}] = useFiler("recent-searches");
   
   const site = React.useContext(SiteContext);
   
   React.useEffect(()=>{
     document.title = "Today-News | Your Favourite News Site";
+    return ()=>{
+      addFavTopics(newsTopics);
+    }
   },[]);
   
   function handleTopicClick(key){
@@ -37,6 +43,7 @@ export default function Home({newsTopics, setTopics, removeTopic}){
     evt.preventDefault();
     setCurrTopic("search");
     setSearchQuery(searchInput);
+    addRecentSearchs(searchInput);
     setSearchInput("");
   }
   
