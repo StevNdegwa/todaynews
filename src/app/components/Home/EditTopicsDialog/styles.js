@@ -47,8 +47,15 @@ font-weight:600;
 background-color:#00c853;
 color:white;
 height:50px;
-padding:0.5em;
+line-height:50px;
 text-align:center;
+@media only screen and (max-width:600px){
+  font-size:1em;
+  font-weight:500;
+  padding:0.2em;
+  height:30px;
+  line-height:30px;
+}
 `;
 
 export const Label = styled.label`
@@ -75,6 +82,12 @@ font-size:1.3em;
   background-color:#424242;
   border:none;
 }
+@media only screen and (max-width:600px){
+  font-size:1em;
+  height:30px;
+  line-height:30px;
+  padding-left:20px;
+}
 `;
 
 export const Actions = styled.div`
@@ -99,5 +112,14 @@ align-items:center;
     background-image:none;
     background-color:#00c853;
   }
+  @media only screen and (max-width:600px){
+    font-size:1em;
+    font-weight:500;
+    height:30px;
+    line-height:30px;
+  }
+}
+@media only screen and (max-width:600px){
+  height:50px;
 }
 `;

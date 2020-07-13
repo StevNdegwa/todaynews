@@ -58,6 +58,8 @@ grid-column:1 /span 4;
 display:flex;
 justify-content:start;
 flex-wrap:wrap;
+position:sticky;
+top:0;
 `;
 
 export const Topic = styled(Control)`

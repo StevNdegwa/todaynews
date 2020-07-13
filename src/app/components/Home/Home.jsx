@@ -18,11 +18,12 @@ export default function Home({newsTopics, setTopics, removeTopic}){
   const [currTopic, setCurrTopic] = React.useState("topnews");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
-  const [favTopics, setFavTopics] = React.useState({dialog:false});
+  const [favTopics, setFavTopics] = useSetFavTopics();
   const [fTopics, {add: addFavTopics, remove: removeFavTopics, update: updateFavTopics, clear: clearFavTopics}] = useFiler("fav-topics");
   const [rSearches, {add: addRecentSearchs, remove: removeRecentSearches, update: updateRecentSearches, clear: clearRecentSearches}] = useFiler("recent-searches");
   
   const site = React.useContext(SiteContext);
+  const dialog = React.useRef(null);
   
   React.useEffect(()=>{
     document.title = "Today-News | Your Favourite News Site";
@@ -51,6 +52,19 @@ export default function Home({newsTopics, setTopics, removeTopic}){
     return site.setCountry(evt.target.value)
   }
   
+  function useSetFavTopics(){
+    const [ft, setFT] = React.useState({dialog:false});
+    
+    function set(n){
+      if(n.dialog){
+        dialog.current.scrollIntoView({behavior: "smooth"});
+      }
+      setFT(n);
+    }
+    
+    return [ft, set];
+  }
+  
   return (<>
     <Header>
       <Form method="POST" onSubmit={submitSearch}>
@@ -72,7 +86,7 @@ export default function Home({newsTopics, setTopics, removeTopic}){
         </Topic>);
       })}
     </Topics>
-    <DialogContainer show={favTopics.dialog} close={()=>setFavTopics({dialog:false})}>
+    <DialogContainer ref={dialog} show={favTopics.dialog} close={()=>setFavTopics({dialog:false})}>
       {favTopics.dialog && <EditTopicsDialog show={favTopics.dialog} close={()=>setFavTopics({dialog:false})} setTopics={setTopics} topics={newsTopics}/>}
     </DialogContainer>
     <Main>

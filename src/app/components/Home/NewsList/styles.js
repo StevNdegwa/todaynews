@@ -84,13 +84,14 @@ padding:0.5em;
 export const PSearches = styled(Ul)`
 grid-column:5 /span 2;
 padding:2em;
+font-size:1.5em;
 @media only screen and (max-width: 700px){
   grid-column:1 /span 6;
+  font-size:1.1em;
 }
 `;
 
 export const Search = styled(Li)`
-font-size:1.5em;
 cursor:pointer;
 color:#0277bd;
 margin:0 0.5em;
@@ -101,7 +102,7 @@ margin:0 0.5em;
 `;
 
 export const NewsLoader = styled(Loader)`
-grid-column-start:4
+grid-column-start:4;
 `;
 
 export const TopicImg = styled(Item)`
