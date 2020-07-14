@@ -9,8 +9,8 @@ Redux<br/>
 ## More info
 
 In this projet i make use of react features such as:
-> React Hooks, including custom hooks and third party hooks<br/>
-> Code Splitting<br/>
-> Memoization<br/>
+  React Hooks, including custom hooks and third party hooks<br/>
+  Code Splitting<br/>
+  Memoization<br/>
 
-I make use of Material Design aspects in designing the fetures
+I make use of Material Design aspects in designing the features
