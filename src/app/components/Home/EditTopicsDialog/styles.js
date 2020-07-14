@@ -86,7 +86,7 @@ font-size:1.3em;
   font-size:1em;
   height:30px;
   line-height:30px;
-  padding-left:20px;
+  padding-left:5px;
 }
 `;
 

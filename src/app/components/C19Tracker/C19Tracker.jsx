@@ -1,10 +1,11 @@
 import React from "react";
-
+import {MdError} from "react-icons/md";
 import {format} from "d3-format";
 
 import Header from "../Header";
 import Footer from "../Footer";
 import Globe from "./Globe.jsx";
+import PieChart from "./PieChart";
 
 import {fetchSummary} from "../../lib/news/fetch-c19";
 
@@ -14,7 +15,7 @@ export default function C19Tracker(){
   const [currCountry, setCurrCountry] = React.useState("KE");
   const [summary, setSummary] = React.useState({});
   const [countryData, setCountryData] = React.useState({});
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState({error:false, message:""});
   
   const numsFormat = format(",");
@@ -30,16 +31,17 @@ export default function C19Tracker(){
   
   async function loadData(){
     setLoading(true);
+    setError({error:false, message:""});
     try{
       const s = await fetchSummary();
       if(s.Countries && s.Global){
         Promise.all([setSummary(s), findCountryData(s.Countries, currCountry),setLoading(false)])
       }else{
-        setError({error:true, message:"No results to display 😓. Something must be wrong."});
+        setError({error:true, message:"No results to display. Something must be wrong."});
       }
     }catch(error){
       setLoading(false);
-      setError({error:true, message:"Sorry! A connection error occured"});
+      setError({error:true, message:"Sorry! A network error occured"});
     }
     
   }
@@ -91,23 +93,34 @@ export default function C19Tracker(){
       <Section>
         <Title>Countries</Title>
         <Content>
-          <CountriesStats>
-            <li>
-              <CSelect onChange={handleCountrySelection} value={currCountry}>
-                {summary.Countries && summary.Countries.map((country)=>{
-                  return (<option key={country.CountryCode} value={country.CountryCode}>{country.Country}</option>)
-                })}
-              </CSelect>
-            </li>
-            <li><b>New Confirmed:</b> {countryData.NewConfirmed ? numsFormat(countryData.NewConfirmed) : 0}</li>
-            <li><b>Total Confirmed:</b> {countryData.TotalConfirmed ? numsFormat(countryData.TotalConfirmed) : 0}</li>
-            <li><b>New Deaths:</b> {countryData.NewDeaths ? numsFormat(countryData.NewDeaths) : 0}</li>
-            <li><b>Total Deaths:</b> {countryData.TotalDeaths ? numsFormat(countryData.TotalDeaths) : 0}</li>
-            <li><b>New Recovered:</b> {countryData.NewRecovered ? numsFormat(countryData.NewRecovered) : 0}</li>
-            <li><b>Total Recovered:</b> {countryData.TotalRecovered ? numsFormat(countryData.TotalRecovered) : 0}</li>
-          </CountriesStats>
-          <Globe country={currCountry}/>
-          <div></div>
+          {loading ? <div> Loading... </div> : 
+              error.error ? <div onClick={()=>loadData()}><MdError size="2em" title={error.message}/></div> :
+              <>
+              <CountriesStats>
+                <li>
+                  <CSelect onChange={handleCountrySelection} value={currCountry}>
+                    {summary.Countries && summary.Countries.map((country)=>{
+                      return (<option key={country.CountryCode} value={country.CountryCode}>{country.Country}</option>)
+                    })}
+                  </CSelect>
+                </li>
+                <li><b>New Confirmed:</b> {countryData.NewConfirmed ? numsFormat(countryData.NewConfirmed) : 0}</li>
+                <li><b>Total Confirmed:</b> {countryData.TotalConfirmed ? numsFormat(countryData.TotalConfirmed) : 0}</li>
+                <li><b>New Deaths:</b> {countryData.NewDeaths ? numsFormat(countryData.NewDeaths) : 0}</li>
+                <li><b>Total Deaths:</b> {countryData.TotalDeaths ? numsFormat(countryData.TotalDeaths) : 0}</li>
+                <li><b>New Recovered:</b> {countryData.NewRecovered ? numsFormat(countryData.NewRecovered) : 0}</li>
+                <li><b>Total Recovered:</b> {countryData.TotalRecovered ? numsFormat(countryData.TotalRecovered) : 0}</li>
+              </CountriesStats>
+              <Globe country={currCountry}/>
+              <PieChart 
+                data={[
+                  {label:"Active Cases", value: (countryData.TotalConfirmed - countryData.TotalDeaths - countryData.TotalRecovered)},
+                  {label:"Total Recovered", value: countryData.TotalRecovered},
+                  {label:"Total Deaths", value: countryData.TotalDeaths}
+                ]}
+              />
+            </>
+          }
         </Content>
       </Section>
     </Main>

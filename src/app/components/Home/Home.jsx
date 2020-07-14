@@ -19,6 +19,9 @@ export default function Home({newsTopics, setTopics, removeTopic}){
   const [searchQuery, setSearchQuery] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
   const [favTopics, setFavTopics] = useSetFavTopics();
+  
+  //Saves data to local  storage
+  //The data storage will be used to develop an analytics feature
   const [fTopics, {add: addFavTopics, remove: removeFavTopics, update: updateFavTopics, clear: clearFavTopics}] = useFiler("fav-topics");
   const [rSearches, {add: addRecentSearchs, remove: removeRecentSearches, update: updateRecentSearches, clear: clearRecentSearches}] = useFiler("recent-searches");
   
@@ -52,6 +55,7 @@ export default function Home({newsTopics, setTopics, removeTopic}){
     return site.setCountry(evt.target.value)
   }
   
+  //Custom React Hook
   function useSetFavTopics(){
     const [ft, setFT] = React.useState({dialog:false});
     
