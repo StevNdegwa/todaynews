@@ -8,7 +8,7 @@ Redux<br/>
 
 ## More info
 
-In this projet i make use of react features such as:
+In this projet i make use of react features such as:<br/>
   React Hooks, including custom hooks and third party hooks<br/>
   Code Splitting<br/>
   Memoization<br/>
