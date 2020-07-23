@@ -5,10 +5,10 @@ A news application
 # About
 
 ## Uses
-React: A javascript library for building user interfaces.<br/>
-D3: A javascript data visualization framework.<br/>
-styled-components: A react based framework for styling components with css.<br/>
-Redux: A state management framework for javascipt applications.<br/>
+1.  React: A javascript library for building user interfaces.
+2.  D3: A javascript data visualization framework.
+3.  styled-components: A react based framework for styling components with css.
+4.  Redux: A state management framework for javascipt applications.
 
 ## Data sources:
 1.  News; Gnews REST API homepage Url: https://gnews.io/
@@ -17,9 +17,9 @@ Redux: A state management framework for javascipt applications.<br/>
 
 ## More info
 
-In this project i make use of react features such as:<br/>
-  React Hooks, including custom hooks and third party hooks<br/>
-  Code Splitting<br/>
-  Memoization<br/>
+In this project I make proper use of react features such as:<br/>
+* React Hooks, including custom hooks and third party hooks<br/>
+* Code Splitting<br/>
+* Memoization<br/>
 
 I make use of Material Design concepts in designing the features.
