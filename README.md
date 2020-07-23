@@ -15,11 +15,11 @@ A news application
 2.  Covid19 data; REST API homepage Url: https://covid19api.com/
 3.  Weather news; OpenWeather REST API homepage URL: https://openweathermap.org/api
 
-## More info
+## More information
 
-In this project I make proper use of react features such as:<br/>
-* React Hooks, including custom hooks and third party hooks<br/>
-* Code Splitting<br/>
-* Memoization<br/>
+> In this project I make proper use of react features such as
+* React Hooks, including custom hooks and third party hooks
+* Code Splitting
+* Memoization
 
-I make use of Material Design concepts in designing the features.
+I make use of Material Design concepts in designing the user interface features.
