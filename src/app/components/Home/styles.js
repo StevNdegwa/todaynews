@@ -71,7 +71,7 @@ font-weight:bold;
 color:white;
 text-align:center;
 cursor:pointer;
-background-image:${(props)=>(props.active ? "linear-gradient(#00c853,#00e676,#00c853)" : "none")};
+background-image:${(props)=>(props.active ? "linear-gradient(#00c853,#00e676,#00e676,#00c853)" : "none")};
 &:hover{
   background-color:#00c853;
 }

@@ -9,4 +9,7 @@ cursor:pointer;
 export  const Svg = styled.svg`
 width:100%;
 height:100%;
+& text{
+  text-decoration:underline;
+}
 `;
