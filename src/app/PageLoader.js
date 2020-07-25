@@ -19,7 +19,7 @@ const PageLoader = React.memo(()=>{
           <stop offset="50%" stop-color="#00e676"/>
           <stop offset="100%" stop-color="#b2ff59"/>
         </linearGradient>
-        <text x="50%" y="95%" fontSize="100" fontWeight="bold" stroke="#00e676" strokeWidth="3" strokeLinejoin="round" fontStretch="ultra-expanded" fontFamily="Impact" textAnchor="middle" textDecoration="underline">
+        <text x="50%" y="95%" fontSize="100" fontWeight="bold" stroke="#00e676" strokeWidth="3" strokeLinejoin="round" fontStretch="ultra-expanded" fontFamily="Impact" textAnchor="middle" textDecoration="underline" fill="url(#paint1)">
           <animate attributeName="fill" dur="1s" values="url(#paint1);url(#paint2);url(#paint3)" repeatCount="indefinite"/>
           <animate attributeName="opacity" dur="1s" values="0.5;1" repeatCount="indefinite"/>
           TN
