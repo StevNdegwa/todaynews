@@ -7,8 +7,8 @@ cursor:pointer;
 `;
 
 export  const Svg = styled.svg`
-width:100%;
-height:100%;
+width:500px;
+height:400px;
 & text{
   text-decoration:underline;
 }

@@ -27,6 +27,7 @@ display:flex;
 justify-content:space-around;
 flex-wrap:wrap;
 padding:1em;
+overflow:auto;
 `;
 
 export const Stat = styled.div`
@@ -110,7 +111,8 @@ border-width:5px;
 export const Svg = styled.svg`
 transform:scale(1);
 width:600px;
-height:400px;cursor:pointer;
+height:400px;
+cursor:pointer;
 `;
 
 export const Chart = styled.div`
