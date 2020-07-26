@@ -63,3 +63,23 @@ div#root{
   opacity:0;
   transition:opacity 200ms;
 }
+
+@keyframes  pageloaderanim{
+  0%{
+    fill:url(#paint1);
+  }
+  50%{
+    fill:url(#paint2);
+  }
+  100%{
+    fill:url(#paint3);
+  }
+}
+
+text.pageLoader{
+  animation-name: pageloaderanim;
+  animation-duration: 1s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
