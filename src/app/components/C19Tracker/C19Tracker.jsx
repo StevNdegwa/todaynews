@@ -26,7 +26,8 @@ export default function C19Tracker(){
   }, [])
   
   function handleCountrySelection(evt){
-    return Promise.all([setCurrCountry(evt.target.value), findCountryData(summary.Countries, evt.target.value)]);
+    setCurrCountry(evt.target.value)
+    findCountryData(summary.Countries, evt.target.value)
   }
   
   async function loadData(){
@@ -35,7 +36,9 @@ export default function C19Tracker(){
     try{
       const s = await fetchSummary();
       if(s.Countries && s.Global){
-        Promise.all([setSummary(s), findCountryData(s.Countries, currCountry),setLoading(false)])
+        setSummary(s)
+        findCountryData(s.Countries, currCountry)
+        setLoading(false)
       }else{
         setError({error:true, message:"No results to display. Something must be wrong."});
       }
@@ -56,7 +59,9 @@ export default function C19Tracker(){
     })
   }
   
-  return (<>
+  try{
+  
+    return (<>
     <Header/>
     <Main>
       {loading && <CLoader size="50px"/>}
@@ -125,5 +130,14 @@ export default function C19Tracker(){
       </Section>
     </Main>
     <Footer/>
-  </>)
+    </>)
+  }catch(error){
+    return (<>
+      <Header/>
+      <Main>
+        <Error>{error.message}</Error>
+      </Main>
+      <Footer/>
+    </>)
+  }
 }

@@ -1,11 +1,9 @@
 import React from "react";
 
-import {geoNaturalEarth1, geoMercator, geoPath, geoGraticule, geoCentroid, geoCircle} from "d3-geo";
-import {scaleSequential, scaleLinear} from "d3-scale";
-import {axisBottom} from "d3-axis";
-import {interpolateBlues, interpolateTurbo} from "d3-scale-chromatic";
-import {interpolateRgb} from "d3-interpolate";
-import {extent} from "d3-array";
+import {geoNaturalEarth1, geoPath, geoGraticule, geoCentroid, geoCircle} from "d3-geo";
+import {scaleSequential} from "d3-scale";
+import {interpolateBlues} from "d3-scale-chromatic";
+import {max, range} from "d3-array";
 import {select} from "d3-selection";
 import {format} from "d3-format";
 
@@ -21,14 +19,13 @@ export default function Globe({country, dataset}){
   
   let  height = 400, width = 600;
   
-  let projection = geoNaturalEarth1().scale(100).translate([width / 2, height / 2]),
+  let projection = geoNaturalEarth1().scale(110).translate([width / 2, height*0.45]),
       graticule = geoGraticule().outline(),
       path = geoPath().projection(projection),
       circle = geoCircle().radius(20),
-      totalConfirmedextent = extent(dataset.Countries, (d)=>d.TotalConfirmed),
-      paint = scaleSequential(totalConfirmedextent, interpolateRgb("#9696f5", "#0000ff")),
-      xScale = scaleLinear(totalConfirmedextent, [0, 300]),
-      legend  = axisBottom(scaleLinear(totalConfirmedextent, [0, 400])).ticks(5)
+      totalConfirmedextent = [0, max(dataset.Countries, (d)=>d.TotalConfirmed)],
+      paint = scaleSequential(totalConfirmedextent, interpolateBlues),
+      scale = scaleSequential([0, 10], interpolateBlues);
       
   React.useEffect(()=>{
     if(chart){
@@ -66,8 +63,8 @@ export default function Globe({country, dataset}){
       .join("path")
       .classed("map", true)
       .attr("d", path)
-      .attr("stroke", "white")
-      .attr("stroke-width", 0.5)
+      .attr("stroke", "#9e9e9e")
+      .attr("stroke-width", 0.8)
       .attr("fill", (d)=>{
         try{
           
@@ -75,7 +72,7 @@ export default function Globe({country, dataset}){
             
             circle.center(geoCentroid(d));
             
-            return "red";
+            return "red"
           }
           
           return paint(dataset.Countries.find((c)=>c.CountryCode === d.properties.code).TotalConfirmed);
@@ -86,12 +83,20 @@ export default function Globe({country, dataset}){
           
         }
       })
+      .on("mouseenter", function(d,i){
+        if(d.properties.code === country){
+          select(this).attr("stroke", "red")
+        }
+      })
+      .on("mouseleave", function(d,i){
+        select(this).attr("stroke", "#9e9e9e")
+      })
       
       chart.append("path")
         .datum(graticule)
         .classed("gr", true)
         .attr("d", path)
-        .attr("stroke", "#9e9e9e")
+        .attr("stroke", "gray")
         .attr("stroke-width", 0.5)
         .attr("fill","none");
         
@@ -103,16 +108,23 @@ export default function Globe({country, dataset}){
         .attr("stroke-width", 0.5)
         .attr("fill","none")
         
-    select(svg.current).select("g.legend").call(legend);
+    let legend = select(svg.current).select("g.legend")
     
-    select(svg.current)
-      .select("g.legend")
-      .append("text")
-      .attr("x", "150")
-      .attr("y", "40")
-      .attr("font-size", "1.5em")
-      .attr("fill", "black")
-      .text("Total Confirmed Cases.");
+    legend.selectAll("rect.box")
+        .data(range(0, 10))
+        .join("rect")
+        .classed("box", true)
+        .attr("x", (d,i)=>{
+          return i * 40;
+        })
+        .attr("y", 10)
+        .attr("width", 40)
+        .attr("height", 20)
+        .attr("fill", (d,i)=>{
+          return scale(d);
+        })
+        
+    legend.append("text").text("Total confirmed cases.")
   }
   
   function updateChart(){
@@ -143,7 +155,7 @@ export default function Globe({country, dataset}){
     <Chart>
       <Svg ref={svg} width={width} height={height}>
         <g className="chart"></g>
-        <g className="legend" transform="translate(100, 350)"></g>
+        <g className="legend" transform="translate(100, 360)"></g>
       </Svg>
     </Chart>
     <CountriesStats>
