@@ -111,7 +111,7 @@ export default function C19Tracker(){
                 <li><b>New Recovered:</b> {countryData.NewRecovered ? numsFormat(countryData.NewRecovered) : 0}</li>
                 <li><b>Total Recovered:</b> {countryData.TotalRecovered ? numsFormat(countryData.TotalRecovered) : 0}</li>
               </CountriesStats>
-              <Globe country={currCountry}/>
+              <Globe country={currCountry} dataset={summary}/>
               <PieChart 
                 data={[
                   {label:"Active Cases", value: (countryData.TotalConfirmed - countryData.TotalDeaths - countryData.TotalRecovered)},

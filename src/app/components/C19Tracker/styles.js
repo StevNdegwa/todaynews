@@ -109,9 +109,6 @@ border-width:5px;
 `;
 
 export const Svg = styled.svg`
-transform:scale(1);
-width:600px;
-height:400px;
 cursor:pointer;
 `;
 
