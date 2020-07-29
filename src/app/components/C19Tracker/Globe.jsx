@@ -1,9 +1,10 @@
 import React from "react";
 
 import {geoNaturalEarth1, geoPath, geoGraticule, geoCentroid, geoCircle} from "d3-geo";
-import {scaleSequential} from "d3-scale";
+import {scaleSequential, scaleBand} from "d3-scale";
+import {axisBottom} from "d3-axis";
 import {interpolateBlues} from "d3-scale-chromatic";
-import {max, range} from "d3-array";
+import {max, range, ticks} from "d3-array";
 import {select} from "d3-selection";
 import {format} from "d3-format";
 
@@ -25,7 +26,10 @@ export default function Globe({country, dataset}){
       circle = geoCircle().radius(20),
       totalConfirmedextent = [0, max(dataset.Countries, (d)=>d.TotalConfirmed)],
       paint = scaleSequential(totalConfirmedextent, interpolateBlues),
-      scale = scaleSequential([0, 10], interpolateBlues);
+      scaleColors = scaleSequential([0, 10], interpolateBlues),
+      legendScale = scaleBand(ticks(0, max(dataset.Countries, (d)=>d.TotalConfirmed), 5), [0, 400]),
+      legendAxis = (g) => g.call(axisBottom(legendScale)
+          .tickFormat(numsFormat)).attr("transform", "translate(0,20)").select(".domain").remove();
       
   React.useEffect(()=>{
     if(chart){
@@ -110,6 +114,8 @@ export default function Globe({country, dataset}){
         
     let legend = select(svg.current).select("g.legend")
     
+    legend.append("text").text("Total confirmed cases.")
+    
     legend.selectAll("rect.box")
         .data(range(0, 10))
         .join("rect")
@@ -119,12 +125,11 @@ export default function Globe({country, dataset}){
         })
         .attr("y", 10)
         .attr("width", 40)
-        .attr("height", 20)
+        .attr("height", 10)
         .attr("fill", (d,i)=>{
-          return scale(d);
+          return scaleColors(d);
         })
-        
-    legend.append("text").text("Total confirmed cases.")
+    legend.append("g").classed("axis", true).call(legendAxis)    
   }
   
   function updateChart(){

@@ -1,6 +1,6 @@
 import React from "react";
 
-import {select, selectAll} from "d3-selection";
+import {select} from "d3-selection";
 import {arc, pie} from "d3-shape";
 import {schemeSet1 as paint} from "d3-scale-chromatic";
 import {format} from "d3-format";
@@ -31,7 +31,7 @@ export default function PieChart({data}){
     let canvas = select(svg.current).append("g").classed("canvas", true).attr("transform", "translate(250, 200)");
     setCanvas(canvas);
     //Arcs
-    canvas.selectAll("path.inner-arcs").data(Pie(data)).enter().append("path").classed("inner-arcs", true).attr("d",innerArc)
+    canvas.selectAll("path.inner-arcs").data(Pie(data)).join("path").classed("inner-arcs", true).attr("d",innerArc)
     .attr("fill", (d,i)=>{
       return paint[i];
     }).append("title")
@@ -40,7 +40,7 @@ export default function PieChart({data}){
     })
     
     //Label  Indicators
-    canvas.selectAll("polyline.indicators").data(Pie(data)).enter().append("polyline").classed("indicators", true)
+    canvas.selectAll("polyline.indicators").data(Pie(data)).join("polyline").classed("indicators", true)
     .attr("points", (d,i)=>{
       let p1 = innerArc.centroid(d), //first point
           p2 = outerArc.centroid(d), //second point
@@ -50,7 +50,7 @@ export default function PieChart({data}){
     }).attr("stroke", "#212121").attr("fill", "none")
     
     //Data Labels
-    canvas.selectAll("text.labels").data(Pie(data)).enter().append("text").classed("labels",  true)
+    canvas.selectAll("text.labels").data(Pie(data)).join("text").classed("labels",  true)
     .attr("x", (d,i)=>{
       let x = outerArc.centroid(d)[0];
           x += x > 0 ? indicatorExtensionLn : -(indicatorExtensionLn);
@@ -66,7 +66,7 @@ export default function PieChart({data}){
   
   function updateChart(){
     //Update chart pieces
-    canvas.selectAll("path.inner-arcs").data(Pie(data)).attr("d", innerArc).select("title")
+    canvas.selectAll("path.inner-arcs").data(Pie(data)).join("path").attr("d", innerArc).select("title")
     .text((d)=>{
       return d ? numsFormat(d.data.value) : 0;
     });
