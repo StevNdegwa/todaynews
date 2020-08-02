@@ -40,9 +40,11 @@ export default function C19Tracker(){
         findCountryData(s.Countries, currCountry)
         setLoading(false)
       }else{
+        setSummary(null);
         setError({error:true, message:"No results to display. Something must be wrong."});
       }
     }catch(error){
+      setSummary(null);
       setLoading(false);
       setError({error:true, message:"Sorry! A network error occured"});
     }
@@ -59,85 +61,112 @@ export default function C19Tracker(){
     })
   }
   
+  let chart;
+  
   try{
   
-    return (<>
-    <Header/>
-    <Main>
-      {loading && <CLoader size="50px"/>}
-      {error.error && <Error>{error.message}</Error>}
-      <Section>
-        <Title>Global Overview</Title>
-        <Content>
-          <Stat paint="#512da8">
-            <h5>New Confirmed</h5>
-            <div>{summary.Global ? numsFormat(summary.Global.NewConfirmed) : 0}</div>
-          </Stat>
-          <Stat paint="#512da8">
-            <h5>Total Confirmed</h5>
-            <div>{summary.Global ? numsFormat(summary.Global.TotalConfirmed) : 0}</div>
-          </Stat>
-          <Stat paint="#e53935">
-            <h5>New Deaths</h5>
-            <div>{summary.Global ? numsFormat(summary.Global.NewDeaths) : 0}</div>
-          </Stat>
-          <Stat paint="#e53935">
-            <h5>Total Deaths</h5>
-            <div>{summary.Global ? numsFormat(summary.Global.TotalDeaths) : 0}</div>
-          </Stat>
-          <Stat paint="#00c853 ">
-            <h5>New Recovered</h5>
-            <div>{summary.Global ? numsFormat(summary.Global.NewRecovered) : 0}</div>
-          </Stat>
-          <Stat paint="#00c853 ">
-            <h5>Total Recovered</h5>
-            <div>{summary.Global ? numsFormat(summary.Global.TotalRecovered) : 0}</div>
-          </Stat>
-        </Content>
-      </Section>
-      <Section>
-        <Title>Countries</Title>
-        <Content>
-          {loading ? <div> Loading... </div> : 
-              error.error ? <div onClick={()=>loadData()}><MdError size="2em" title={error.message}/></div> :
-              <>
-              <CountriesStats>
-                <li>
-                  <CSelect onChange={handleCountrySelection} value={currCountry}>
-                    {summary.Countries && summary.Countries.map((country)=>{
-                      return (<option key={country.CountryCode} value={country.CountryCode}>{country.Country}</option>)
-                    })}
-                  </CSelect>
-                </li>
-                <li><b>New Confirmed:</b> {countryData.NewConfirmed ? numsFormat(countryData.NewConfirmed) : 0}</li>
-                <li><b>Total Confirmed:</b> {countryData.TotalConfirmed ? numsFormat(countryData.TotalConfirmed) : 0}</li>
-                <li><b>New Deaths:</b> {countryData.NewDeaths ? numsFormat(countryData.NewDeaths) : 0}</li>
-                <li><b>Total Deaths:</b> {countryData.TotalDeaths ? numsFormat(countryData.TotalDeaths) : 0}</li>
-                <li><b>New Recovered:</b> {countryData.NewRecovered ? numsFormat(countryData.NewRecovered) : 0}</li>
-                <li><b>Total Recovered:</b> {countryData.TotalRecovered ? numsFormat(countryData.TotalRecovered) : 0}</li>
-              </CountriesStats>
-              <Globe country={currCountry} dataset={summary}/>
-              <PieChart 
-                data={[
-                  {label:"Active Cases", value: (countryData.TotalConfirmed - countryData.TotalDeaths - countryData.TotalRecovered)},
-                  {label:"Total Recovered", value: countryData.TotalRecovered},
-                  {label:"Total Deaths", value: countryData.TotalDeaths}
-                ]}
-              />
-            </>
-          }
-        </Content>
-      </Section>
-    </Main>
-    <Footer/>
-    </>)
-  }catch(error){
-    return (<>
+    chart = (<>
       <Header/>
       <Main>
-        <Error>{error.message}</Error>
-      </Main>
-      <Footer/>
-    </>)
-  }
+        {loading && <CLoader size="50px"/>}
+        {error.error && <Error>{error.message}</Error>}
+        <Section>
+          <Title>Global Overview</Title>
+          <Content>
+            <Stat paint="#512da8">
+              <h5>New Confirmed</h5>
+              <div>{summary.Global ? numsFormat(summary.Global.NewConfirmed) : 0}</div>
+            </Stat>
+            <Stat paint="#512da8">
+              <h5>Total Confirmed</h5>
+              <div>{summary.Global ? numsFormat(summary.Global.TotalConfirmed) : 0}</div>
+            </Stat>
+            <Stat paint="#e53935">
+              <h5>New Deaths</h5>
+              <div>{summary.Global ? numsFormat(summary.Global.NewDeaths) : 0}</div>
+            </Stat>
+            <Stat paint="#e53935">
+              <h5>Total Deaths</h5>
+              <div>{summary.Global ? numsFormat(summary.Global.TotalDeaths) : 0}</div>
+            </Stat>
+            <Stat paint="#00c853 ">
+              <h5>New Recovered</h5>
+              <div>{summary.Global ? numsFormat(summary.Global.NewRecovered) : 0}</div>
+            </Stat>
+            <Stat paint="#00c853 ">
+              <h5>Total Recovered</h5>
+              <div>{summary.Global ? numsFormat(summary.Global.TotalRecovered) : 0}</div>
+            </Stat>
+          </Content>
+        </Section>
+        <Section>
+          <Title>Countries</Title>
+          <Content>
+            {loading ? <div> Loading... </div> : 
+                error.error ? 
+                  <div onClick={()=>loadData()}><MdError size="2em" title={error.message}/></div> :
+                  <>
+                    <CountriesStats>
+                      <li>
+                        <CSelect onChange={handleCountrySelection} value={currCountry}>
+                          {summary.Countries && summary.Countries.map((country)=>{
+                            return (<option key={country.CountryCode} value={country.CountryCode}>{country.Country}</option>)
+                          })}
+                        </CSelect>
+                      </li>
+                      <li>
+                        <b>New Confirmed:</b> 
+                        {countryData.NewConfirmed ? numsFormat(countryData.NewConfirmed) : 0}
+                      </li>
+                      <li>
+                        <b>Total Confirmed:</b> 
+                        {countryData.TotalConfirmed ? numsFormat(countryData.TotalConfirmed) : 0}
+                      </li>
+                      <li>
+                        <b>New Deaths:</b> 
+                        {countryData.NewDeaths ? numsFormat(countryData.NewDeaths) : 0}
+                      </li>
+                      <li>
+                        <b>Total Deaths:</b> 
+                        {countryData.TotalDeaths ? numsFormat(countryData.TotalDeaths) : 0}
+                      </li>
+                      <li>
+                        <b>New Recovered:</b> 
+                        {countryData.NewRecovered ? numsFormat(countryData.NewRecovered) : 0}
+                      </li>
+                      <li>
+                        <b>Total Recovered:</b> 
+                        {countryData.TotalRecovered ? numsFormat(countryData.TotalRecovered) : 0}
+                      </li>
+                    </CountriesStats>
+                    <Globe country={currCountry} dataset={summary}/>
+                    <PieChart 
+                      data={[
+                        {label:"Active Cases", value: (countryData.TotalConfirmed - countryData.TotalDeaths - countryData.TotalRecovered)},
+                        {label:"Total Recovered", value: countryData.TotalRecovered},
+                        {label:"Total Deaths", value: countryData.TotalDeaths}
+                      ]}
+                    />
+                  </>
+                }
+              </Content>
+            </Section>
+          </Main>
+        <Footer/>
+      </>) 
+    
+    }catch(error){
+    
+      chart = (<>
+        <Header/>
+        <Main>
+          <Error onClick={()=>loadData()}>
+            <MdError size="2em" title={error.message}/>
+          </Error>
+        </Main>
+        <Footer/>
+      </>)
+    }
+  
+  return chart;
 }
