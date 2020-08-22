@@ -18,10 +18,8 @@ export default function Home({newsTopics, setTopics, removeTopic}){
   const [currTopic, setCurrTopic] = React.useState("topnews");
   const [searchQuery, setSearchQuery] = React.useState("");
   const [searchInput, setSearchInput] = React.useState("");
-  const [favTopics, setFavTopics] = useSetFavTopics();
+  const [favTopics, setFavTopics] = React.useState({dialog:false});
   
-  //Saves data to local  storage
-  //The data storage will be used to develop an analytics feature
   const [fTopics, {add: addFavTopics, remove: removeFavTopics, update: updateFavTopics, clear: clearFavTopics}] = useFiler("fav-topics");
   const [rSearches, {add: addRecentSearchs, remove: removeRecentSearches, update: updateRecentSearches, clear: clearRecentSearches}] = useFiler("recent-searches");
   
@@ -53,20 +51,6 @@ export default function Home({newsTopics, setTopics, removeTopic}){
   
   function handleCountrySelection(evt){
     return site.setCountry(evt.target.value)
-  }
-  
-  //Custom React Hook
-  function useSetFavTopics(){
-    const [ft, setFT] = React.useState({dialog:false});
-    
-    function set(n){
-      if(n.dialog){
-        dialog.current.scrollIntoView({behavior: "smooth"});
-      }
-      setFT(n);
-    }
-    
-    return [ft, set];
   }
   
   return (<>
