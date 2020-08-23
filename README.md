@@ -18,7 +18,7 @@ A news application
 ## More information
 
 > In this project I make proper use of react features such as
-* React Hooks, including custom hooks and third party hooks
+* React Hooks
 * Code Splitting
 * Memoization
 
