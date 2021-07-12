@@ -42,6 +42,7 @@ padding:0.5em;
     color:#424242;
     font-weight:600;
     cursor:help;
+    text-decoration:none;
     &:hover{
       color:#00c853;
     }
@@ -95,8 +96,11 @@ export const Search = styled(Li)`
 cursor:pointer;
 color:#0277bd;
 margin:0 0.5em;
+padding-left:1rem;
+&:first-of-type{
+  padding-left:0;
+}
 &>h4{
-  text-decoration:underline;
   color:#212121;
 }
 `;
