@@ -9,7 +9,7 @@
     "crooks": "^1.0.23",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5"
   },
@@ -38,7 +38,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "cross-fetch": "^3.0.4",
     "d3": "^5.16.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^9.0.0",
     "react-icons": "^3.10.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
